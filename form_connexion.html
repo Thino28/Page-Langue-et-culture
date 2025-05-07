@@ -6,15 +6,18 @@
   <link rel="stylesheet" href="form_connexion.css">
 </head>
 <body>
-    <h1>Bienvenue au Colloque "Langues et Cultures"</h1>
-    <div class="intro">
-        Rejoignez-nous pour célébrer la richesse des langues et des cultures lors de notre colloque annuelle, un lieu d'échange, de partage et de découverte. 
-    </div>
-    <div class="conteneur">
-      <img src="image_page_inscription.png" alt="image_langage">
-      <div class="form">
-        
-      </div>
-    </div>
+  <h1>Bienvenue au Colloque "Langues et Cultures"</h1>
+  <div class="intro">
+      Rejoignez-nous pour célébrer la richesse des langues et des cultures lors de notre colloque annuelle, un lieu d'échange, de partage et de découverte. 
+  </div>
+  <div class="conteneur">
+    <img src="image\image_page_inscription.png" alt="image_langage">
+    <form action="connexion.php">
+      Nom d'utilisateur : <input type="text" name="identifiant" id="identifiant"><br>
+      Mot de passe : <input type="text" name="mdp" id="mdp"> <br>
+      <span>Mot de passe <b>oublié</b> ? </span> <br>
+      <input id="submit" type="submit" value="Se connecter">
+    </form>
+  </div>
 </body>
 </html>
