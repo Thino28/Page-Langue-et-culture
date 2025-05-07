@@ -8,7 +8,6 @@ h1 {
 body {
     background-color: #7093BC;
     font-family: Inter;
-
 }
 
 .intro {
@@ -17,26 +16,44 @@ body {
     text-align: center;
     background-color: #FFEDD7;
     border-radius: 10px;
-    height: 80px;
+    height: auto;
+    min-height: 80px;
     font-size: 1.4em;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 img {
-    width: 30%;
-    height: 30%;
-    margin-left: 15%;
-    margin-top: 20px;
-
+    width: 25%;
+    height: 25%;
+    display: block;
+    position: relative;
+    left: 20%;
 }
 
 .buttons {
     background-color: #FFEDD7;
     border-radius: 10px;
-    height: 180px;
-    width: 300px;
-    
+    width: 23vw;
+    position: relative;
+    left: 30%;
+    margin-top: 5% ;
 }
 
-.center {
-    align-items: center;
+.conteneur {
+    display: flex;
+    margin-top: 4%;
 }
+
+button {
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 10px;
+    height: 25%;
+    width: 15vw;
+    margin-top: 12%;
+    margin-left: 4vw;
+    font-size: 2vw;
+}
+
