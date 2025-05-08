@@ -12,25 +12,83 @@
   </div>
   <div class="conteneur">
     <img src="image\image_page_inscription.png" alt="image_langage">
-
-    <form action="inscription.php" method="get">
-
-      <div class="ligne">
-        <span>Nom d'utilisateur : </span> 
-        <input type="text" name="identifiant" id="identifiant">
-      </div>
-      <br>
-      <div class="ligne">
-        <span>Mot de passe : </span>
-        <input type="text" name="mdp" id="mdp">
-      </div>
-      <br>
-      <div class="autre">
-        <p>Mot de passe <a href=""><b>oublié</b></a> ? </p> 
-        <input id="submit" type="submit" value="Se connecter">
-      </div>
-
-    </form>
   </div>
+
+  <form action="inscription.php" method="get">
+
+    <div class="ligne">
+      <span>Nom : </span> 
+      <input type="text" name="identifiant" id="identifiant">
+    </div>
+    <br>
+    <div class="ligne">
+      <span>Prénom : </span>
+      <input type="text" name="prenom" id="prenom">
+    </div>
+    <br>
+    <div class="ligne">
+      <span>Adresse mail : </span>
+      <input type="mail" name="mail" id="mail">
+    </div>
+    <br>
+    <div class="ligne">
+      <span>Téléphone : </span>
+      <input type="tel" name="mdp" id="mdp">
+    </div>
+    <br>
+    <div class="ligne">
+      <span>Date de naissance : </span>
+      <input type="date" name="naiss" id="naiss">
+    </div>
+    <br>
+    <div class="ligne">
+      <span>Mot de passe : </span>
+      <input type="password" name="mdp" id="mdp">
+    </div>
+    <br>
+    <div class="ligne">
+      <span>Confirmation du mot de passe : </span>
+      <input type="password" name="mdp2" id="mdp2">
+    </div>
+    <br>
+
+    <div class="type_inscription">
+      Inscription :
+      <input type="radio" checked name="type_inscr" id="perso" value="Perso"> Perso
+      <input type="radio" name="type_inscr" id="pro" value="Pro"> Pro
+      <br><br>
+    
+      <div class="info_pro">
+        <div class="ligne_bis">
+          <span>Fonction : </span>
+          <input type="text" name="fonction" id="fonction">
+        </div>
+        <br>
+        <div class="ligne_bis">
+          <span>Adresse email pro : </span>
+          <input type="mail" name="mailpro" id="mailpro">
+        </div>
+        <br>
+        <div class="ligne_bis">
+          <span>Téléphone pro : </span>
+          <input type="tel" name="telpro" id="telpro">
+        </div>
+        <br>  
+      </div>
+      
+      <div class="autre">
+        <a href="inscription.html">
+          <img id="retour" src="image\fleche_retour.png" alt="retour">
+        </a>
+        <input id="submit" type="submit" value="S'inscrire">
+      </div>
+    
+    </div>
+    <br>
+    
+    
+
+  </form>
+
 </body>
 </html>
