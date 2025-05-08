@@ -36,10 +36,13 @@ img {
 
 form {
     background-color: #D9D9D9;
-    border-radius: 5%;
+    border-radius: 15px;
     width: 40vw;
+    height: 250px;
     position: relative;
     left: 20%;
+    font-size: 1.45em;
+    padding-top: 4vh;
 }
 
 .conteneur {
@@ -50,17 +53,40 @@ form {
 input:not(#submit) {
     background-color: #7093BC;
     border-style: none;
-    border-radius: 0.5em;
-    border: 0.2em solid;
-    font-size: 2vw;
+    border-radius: 0.4em;
+    border: 0.15em solid;
+    margin-left: 5%;
+    width: 10em;
+    font-size: large;
 }
 
 #submit {
+    display: block;
     background-color: #7093BC;
     border-style: none;
     border-radius: 0.7em;
-    height: 30%;
+    height: 16%;
     width: 15vw;
     font-size: 1.5vw;
     color: white;
+    margin: auto;
+}
+
+#submit:hover {
+    background-color: #3870af;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    margin-top: 6%;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+span {
+    margin-left: 10%;
 }
