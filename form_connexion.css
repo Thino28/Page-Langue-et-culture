@@ -26,20 +26,20 @@ body {
     opacity: 50%;
 }
 
-img {
+.conteneur > img {
     max-width: 380px;
     opacity: 50%;
     margin-left: 10%;
+    margin-top: 3%;
 }
 
-a {
+#oubli {
     text-decoration: none;
     color: black;
 }
 
 .conteneur {
     display: flex;
-    margin-top: 2%;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
@@ -52,6 +52,7 @@ form {
     height: 13em;
     font-size: 1.45em;
     flex-grow: 1;
+    margin-top : 5%;
     margin-left: 5%;
     margin-right: 5%;
     display: flex;
@@ -87,6 +88,14 @@ form {
     flex-direction: column;
 }
 
+.autre > a {
+    align-self: flex-start;
+    margin-left: 3%;
+}
+#retour {
+    width: 70%;    
+}
+
 p {
     font-size: 0.8em;
 }
@@ -106,9 +115,14 @@ p {
 }
 
 @media (max-width: 1000px) {
-    img {
+    .conteneur > img {
+        margin-top: 4%;
+        margin-left: 0%;
         width: 60%;
         opacity: 50%;
-        margin: 0%;
+    }
+    
+    form {
+        margin-top : 5%;
     }
 }
