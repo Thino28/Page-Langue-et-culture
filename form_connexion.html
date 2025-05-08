@@ -12,11 +12,24 @@
   </div>
   <div class="conteneur">
     <img src="image\image_page_inscription.png" alt="image_langage">
-    <form action="connexion.php">
-      <span>Nom d'utilisateur : </span> <input type="text" name="identifiant" id="identifiant"><br><br>
-      <span>Mot de passe : </span> <input type="text" name="mdp" id="mdp"> 
-      <p>Mot de passe <a href=""><b>oublié</b></a> ? </p> 
-      <input id="submit" type="submit" value="Se connecter">
+
+    <form action="connexion.php" method="get">
+
+      <div class="ligne">
+        <span>Nom d'utilisateur : </span> 
+        <input type="text" name="identifiant" id="identifiant">
+      </div>
+      <br>
+      <div class="ligne">
+        <span>Mot de passe : </span>
+        <input type="text" name="mdp" id="mdp">
+      </div>
+      <br>
+      <div class="autre">
+        <p>Mot de passe <a href=""><b>oublié</b></a> ? </p> 
+        <input id="submit" type="submit" value="Se connecter">
+      </div>
+
     </form>
   </div>
 </body>
