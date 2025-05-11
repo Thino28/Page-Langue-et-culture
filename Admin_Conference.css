@@ -21,8 +21,8 @@ header{
 }
 
 .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 2rem;
+    height: 2rem;
     margin-bottom: 5px;
 }
 
@@ -35,6 +35,7 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     text-decoration: none;
     color: white;
     font-family: 'Itim',sans-serif;
@@ -101,13 +102,13 @@ main{
 
 .conf_titre{
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2.5em;
     margin: 0;
 }
 
 .categorie{
     float: right;
-    font-size: 0.9em;
+    font-size: 1em;
     margin-top: -1.5em;
 }
 .duree{
@@ -115,7 +116,7 @@ main{
 }
 .langues{
     margin-top: 10%;
-    margin-bottom: 0%;
+    margin-bottom: 1%;
 }
 .salle{
     text-align: center;
@@ -151,7 +152,16 @@ main{
 .modifier:hover {
     background-color: #3870af;
 }
-
+.valider{
+    border-style: none;
+    background: none;
+    cursor: pointer;
+}
+.refuser{
+    border-style: none;
+    background: none;
+    cursor: pointer;
+}
 
 
 /* ---Main fin -------------------------------------------------------- */
