@@ -72,7 +72,15 @@ form {
     display: none;
 }
 
+.info_conf {
+    display: none;
+}
+
 #pro:checked ~ .info_pro{
+    display: block;
+}
+
+#conf:checked ~ .info_conf{
     display: block;
 }
 
