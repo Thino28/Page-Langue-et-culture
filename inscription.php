@@ -30,19 +30,19 @@
         }
         $cnx -> beginTransaction();
         try {
-            $cnx -> exec("INSERT INTO participant VALUES (DEFAULT,'$nom','$prenom','$date_naissance','$mail','$tel','$adresse','$profession','$type','$spe')");
-            if ($type) {
+            $cnx -> exec("INSERT INTO participant VALUES (DEFAULT,'$nom','$prenom','$date_naissance','$mail','$tel','$adresse','$profession','$type','$conf')");
+            if ($type=="true") {
                 $id = $cnx -> lastInsertId();
                 $cnx -> exec("INSERT INTO professionnel VALUES ($id,'$fonction','$telpro','$mailpro')");
             }
-            if ($conf) {
+            if ($conf=="true") {
                 $id = $cnx -> lastInsertId();
                 $cnx -> exec("INSERT INTO conferencier VALUES ('$fonction_conf','$orga',$id,NULL,NULL)");
             }
             $cnx -> commit();
-            echo "L'inscription a été un succès";
+            echo "<meta http-equiv='refresh' content='0; url=inscription.html'>";
         } catch (PDOException $e) {
-            echo "ERREUR : L'inscription a échouée";
+            echo "<meta http-equiv='refresh' content='0; url=form_inscription.html'>";
             $cnx -> rollback();
             echo $e;
         }
