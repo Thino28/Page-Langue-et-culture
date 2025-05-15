@@ -14,8 +14,14 @@
     <img src="image\image_page_inscription.png" alt="image_langage">
   </div>
 
-  <form action="inscription.php" method="post">
-
+  <form action="form_inscription_bdd.php" method="post">
+    <?php 
+      session_start();
+      if (isset($_SESSION["essai_inscription"])) {
+        echo "<p>".$_SESSION['essai_inscription']."</p>";
+        session_unset();
+      }
+    ?>
     <div class="ligne">
       <span>Nom : </span> 
       <input type="text" name="nom" id="nom">
@@ -61,7 +67,7 @@
       <input type="password" name="mdp2" id="mdp2">
     </div>
     <br>
-
+    
     <div class="type_inscription">
       Inscription :
       <input type="radio" checked name="type_inscr" id="perso" value="Perso"> Perso
