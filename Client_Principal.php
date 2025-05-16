@@ -31,7 +31,13 @@
                 </a>
                 <a href="#profil" >
                     <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
-                    Profil
+                    <?php
+                        if (isset($_COOKIE['prenom'])){
+                            echo $_COOKIE['prenom'];
+                        } else {
+                            echo "Profil";
+                        }
+                    ?>
                 </a>
             </nav>
         </div>

@@ -48,5 +48,6 @@
     } else {
         $_SESSION["essai_inscription"] = "Remplissez le formulaire";
     }
-    echo "<meta http-equiv='refresh' content='0; url=form_inscription.php'>";
+    header('location:form_inscription.php');
+    exit();
 ?>

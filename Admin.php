@@ -16,21 +16,27 @@
 
         <div class="sous-menu">
             <nav>
-                <a href="Admin.html">
+                <a href="Admin.php">
                     <img src="image/Vector.png" alt="home" class="logo-icon">
                     Accueil
                 </a>
-                <a href="Admin_Conference.html" >
+                <a href="Admin_Conference.php" >
                     <img src="image/Icon_conférence.png" alt="icon_conference" class="logo-icon">
-                    Gestion  conférence
+                    Gestion conférence
                 </a>
-                <a href="Admin_Utilisateur.html" >
+                <a href="Admin_Utilisateur.php" >
                     <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
                     Gestion utilisateur
                 </a>
                 <a href="#profil" >
                     <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
-                    Profil
+                    <?php
+                        if (isset($_COOKIE['prenom'])){
+                            echo $_COOKIE['prenom'];
+                        } else {
+                            echo "Profil";
+                        }
+                    ?>
                 </a>
             </nav>
         </div>
@@ -48,11 +54,11 @@
             </div>
 
             <div class="Bouton_admin">
-                <a href="Admin_Conference.html" class="case-bouton-1">
+                <a href="Admin_Conference.php" class="case-bouton-1">
                     <h2>Gestion des <br> conférences</h2>
                     <img src="image/Icon_conférence.png" alt="icon_conference" class="icon">
                 </a>
-                <a href="Admin_Utilisateur.html" class="case-bouton 2">
+                <a href="Admin_Utilisateur.php" class="case-bouton 2">
                     <h2>Gestion des <br> utilisateurs</h2>
                     <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="icon">
                 </a>
