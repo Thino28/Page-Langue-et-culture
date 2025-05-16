@@ -24,11 +24,11 @@
             header('location:form_connexion.html');
             exit();
         }
-        if ($_COOKIE["conf"]) {
+        if ($conf) {
             header('location:form_connexion.html');  //CHANGER REDIRECTION pages conférencier
             exit();
         }
-        if ($_COOKIE["admin"]) {
+        if ($admin) {
             header('location:Admin.php');
             exit();
         }

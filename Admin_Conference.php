@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Gestion du site</title>
@@ -54,6 +54,31 @@
             <div class="cases-container">
                 <!-- Conference 1 -->
                 <div class="case-conférence">
+                    <?php
+                    include("connexion_admin.inc.php");
+                    try {
+                        $result = $cnx -> query("SELECT conference.num_conf,conference.langue,conference.horaire,conference.duree,conference.date,conference.type,conference.salle,theme.categorie FROM conference JOIN historique_conf ON conference.num_conf = historique_conf.num_conf JOIN theme ON historique_conf.num_theme=theme.num_theme");
+                        while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
+                            setlocale(LC_TIME, 'french');
+                            $date = new DateTime($ligne->date);
+                            $dt = strftime('%A %d %B %Y', $date->getTimestamp());
+                            $hr = date("H\hi", strtotime($ligne->horaire));
+                            list($heures, $minutes, $secondes) = explode(":", $ligne->duree);
+                            $dur = ($heures * 60) + $minutes;
+                            echo "<p class='date'>$dt</p><hr>";
+                            echo "<p class='type'>$ligne->type</p>"; 
+                            echo "<h2 class='conf_titre'>Conférence sur $ligne->categorie</h2>";
+                            echo "<p class='langues'>Langue : $ligne->langue</p>";
+                            echo "<p class='duree'>$hr - $dur"."min</p>";
+                            echo "<p class='categorie'>$ligne->type</p>";
+                            echo "<p class='salle'> Salle $ligne->salle</p>";
+                            echo "<p class='place'> 200 places restantes</p>";
+                        }
+                        
+                    } catch (PDOException $e) {
+                        echo $e;
+                    }
+                    ?><!--
                     <p class="date">Lundi 28 avril 2025</p>
                     <hr>
                     <p class="type">Conférence</p>
@@ -62,7 +87,7 @@
                     <p class="duree">16h - 180min</p>
                     <p class="categorie">Educatif</p>
                     <p class="salle"> Salle 202</p>
-                    <p class="place"> 200 places restantes</p>
+                    <p class="place"> 200 places restantes</p>-->
                     <div class="actions">
                         <button class="modifier">Modifier</button>
                         <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
