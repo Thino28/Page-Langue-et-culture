@@ -8,6 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
 <body>
+    <?php 
+        include("script_php/test_cookie.php");
+        if ($_COOKIE["id"]>2) {
+            header('location:choix.html');
+            exit();
+        }
+    ?>
     <header>
         <div class="logo">
             <img src="image/Foreign Language Course.png" alt="Logo" class="logo-image">

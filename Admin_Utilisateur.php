@@ -8,6 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
 <body>
+    <?php 
+        include("script_php/test_cookie.php");
+        if ($_COOKIE["id"]>2) {
+            header('location:choix.html');
+            exit();
+        }
+    ?>
     <header>
         <div class="logo">
             <img src="image/Foreign Language Course.png" alt="Logo" class="logo-image">
@@ -21,7 +28,7 @@
                 </a>
                 <a href="Admin_Conference.php" >
                     <img src="image/Icon_conférence.png" alt="icon_conference" class="logo-icon">
-                    Gestion conférence
+                    Gestion  conférence
                 </a>
                 <a href="Admin_Utilisateur.php" >
                     <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
@@ -52,21 +59,24 @@
             </div>
 
             <div class="cases-principales">
-                <!-- Conferencier -->
                 
                 <div class="case-conférencier">
                     <h2 class="titre_conf">Conférencier</h2>
+                    <?php
+                        include ("script_php/cnx_admin.inc.php");
+                        $result = $cnx -> query("SELECT * FROM vdeux.participant WHERE titre_conf='true'");
+                        while ($ligne = $result->fetch(PDO::FETCH_OBJ)) {
+                            echo "<div class='personne'><p>$ligne->nom $ligne->prenom</p>";
+                            echo "<div class='actions'><div class='supprime'>";
+                            echo "<label><input type='button' value='Supprimer'></label></div></div></div>";
+                        }
+                    ?>
+
+
+                    <!-- Conférencier
                     <div class="personne">
                         <p>PULENDRAN Thinojan</p>
                         <div class="actions">
-                                <label>
-                                    Activation
-                                    <input type="radio" name="choix1" value="activation">
-                                </label>
-                                <label>
-                                    Suspension
-                                    <input type="radio" name="choix1" value="suspension">
-                                </label>
                             <div class="supprime">
                                 <label>
                                     <input type="button" value="Supprimer">
@@ -78,14 +88,6 @@
                     <div class="personne">
                         <p>CHARLES Lucas</p>
                         <div class="actions">
-                                <label>
-                                    Activation
-                                    <input type="radio" name="choix2" value="activation">
-                                </label>
-                                <label>
-                                    Suspension
-                                    <input type="radio" name="choix2" value="suspension">
-                                </label>
                             <div class="supprime">
                                 <label>
                                     <input type="button" value="Supprimer">
@@ -97,38 +99,33 @@
                     <div class="personne">
                         <p>GONZALEZ Nicolas</p>
                         <div class="actions">
-                                <label>
-                                    Activation
-                                    <input type="radio" name="choix3" value="activation">
-                                </label>
-                                <label>
-                                    Suspension
-                                    <input type="radio" name="choix3" value="suspension">
-                                </label>
                             <div class="supprime">
                                 <label>
                                     <input type="button" value="Supprimer">
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
 
-                <!-- Participant -->
+                 
                 
                 <div class="case-participant">
                     <h2 class="titre_conf">Participant</h2>
+                    <?php
+                        include ("script_php/cnx_admin.inc.php");
+                        $result = $cnx -> query("SELECT * FROM vdeux.participant WHERE titre_conf!='true' AND num_parti>2");
+                        while ($ligne = $result->fetch(PDO::FETCH_OBJ)) {
+                            echo "<div class='personne'><p>$ligne->nom $ligne->prenom</p>";
+                            echo "<div class='actions'><div class='supprime'>";
+                            echo "<label><input type='button' value='Supprimer'></label></div></div></div>";
+                        }
+                    ?>
+                <!-- Participant
+                    
                     <div class="personne">
                         <p>TRAN Kevin</p>
                         <div class="actions">
-                                <label>
-                                    Activation
-                                    <input type="radio" name="choix4" value="activation">
-                                </label>
-                                <label>
-                                    Suspension
-                                    <input type="radio" name="choix4" value="suspension">
-                                </label>
                             <div class="supprime">
                                 <label>
                                     <input type="button" value="Supprimer">
@@ -139,21 +136,13 @@
                     <div class="personne">
                         <p>SATHIANATHAN Amélia</p>
                         <div class="actions">
-                                <label>
-                                    Activation
-                                    <input type="radio" name="choix5" value="activation">
-                                </label>
-                                <label>
-                                    Suspension
-                                    <input type="radio" name="choix5" value="suspension">
-                                </label>
                             <div class="supprime">
                                 <label>
                                     <input type="button" value="Supprimer">
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="validation-global">
                     <label>

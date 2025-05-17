@@ -8,8 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
 <body>
+    <?php 
+        include("script_php/test_cookie.php");
+        if ($_COOKIE["id"]>2) {
+            header('location:choix.html');
+            exit();
+        }
+    ?>
     <header>
-        
         <div class="logo">
             <img src="image/Foreign Language Course.png" alt="Logo" class="logo-image">
         </div>
@@ -22,7 +28,7 @@
                 </a>
                 <a href="Admin_Conference.php" >
                     <img src="image/Icon_conférence.png" alt="icon_conference" class="logo-icon">
-                    Gestion conférence
+                    Gestion  conférence
                 </a>
                 <a href="Admin_Utilisateur.php" >
                     <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
