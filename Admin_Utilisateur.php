@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Gestion du site</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Admin_Utilisateur.css">
+    <link rel="stylesheet" href="CSS/Admin_Utilisateur.css">
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
 <body>

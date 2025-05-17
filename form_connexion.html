@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Connexion</title>
-  <link rel="stylesheet" href="form_connexion.css">
+  <link rel="stylesheet" href="CSS/form_connexion.css">
 </head>
 <body>
   <h1>Bienvenue au Colloque "Langues et Cultures"</h1>
@@ -13,7 +13,7 @@
   <div class="conteneur">
     <img src="image\image_page_inscription.png" alt="image_langage">
 
-    <form action="connexion.php" method="post">
+    <form action="script_php\form_connexion_bdd.php" method="post">
 
       <div class="ligne">
         <span>Mail : </span> 
@@ -28,7 +28,7 @@
       <div class="autre">
         <p>Mot de passe <a id="oubli" href=""><b>oublié</b></a> ? </p> 
         <input id="submit" type="submit" value="Se connecter">
-        <a href="inscription.html">
+        <a href="choix.html">
           <img id="retour" src="image\fleche_retour.png" alt="retour">
         </a>
       </div>

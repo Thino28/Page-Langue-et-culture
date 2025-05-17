@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Formulaire inscription</title>
-  <link rel="stylesheet" href="form_inscription.css">
+  <link rel="stylesheet" href="CSS/form_inscription.css">
 </head>
 <body>
   <h1>Bienvenue au Colloque "Langues et Cultures"</h1>
@@ -14,7 +14,7 @@
     <img src="image\image_page_inscription.png" alt="image_langage">
   </div>
 
-  <form action="form_inscription_bdd.php" method="post">
+  <form action="script_php\form_inscription_bdd.php" method="post">
     <?php 
       session_start();
       if (isset($_SESSION["essai_inscription"])) {
@@ -107,7 +107,7 @@
       </div>
       
       <div class="autre">
-        <a href="inscription.html">
+        <a href="choix.html">
           <img id="retour" src="image\fleche_retour.png" alt="retour">
         </a>
         <input id="submit" type="submit" value="S'inscrire">
