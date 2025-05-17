@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion du site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Conferencier_Principal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/Foreign Language Course.png" alt="Logo" class="logo-image">
+        </div>
+
+        <div class="sous-menu">
+            <nav>
+                <a href="Admin.php">
+                    <img src="image/Vector.png" alt="home" class="logo-icon">
+                    Accueil
+                </a>
+                <a href="Admin_Conference.php" >
+                    <img src="image/Icon_conférence.png" alt="icon_conference" class="logo-icon">
+                    Gestion  conférence
+                </a>
+                <a href="Admin_Utilisateur.php" >
+                    <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
+                    Gestion utilisateur
+                </a>
+                <a href="#profil" >
+                    <img src="image/icon Compte blanc.png" alt="" class="logo-icon">>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="transition-band"></div>
+
+    <main>
+        <section>
+            <div class="titre">
+                <h1>
+                    Vos conférences :
+                </h1>
+            </div>
+            <div class="ajouter">
+                <input type="checkbox" id="actif" hidden> 
+                <div class="ajouter-container">
+                    <label for="actif">
+                        Ajouter
+                    </label>
+                </div>
+                <div class="ajouter-contenu">
+                    <form>
+                        <div class="form-group">
+                            <label for="titre">Titre de la conférence :</label>
+                            <input type="text" id="titre" name="titre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Date :</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duree">Durée :</label>
+                            <input type="text" id="duree" name="duree" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="horaire">Horaire :</label>
+                            <input type="text" id="horaire" name="horaire" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="langue">Langue :</label>
+                            <input type="text" id="langue" name="langue" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Type">Type :</label>
+                            <input type="text" id="type" name="type" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="categorie">Catégorie :</label>
+                            <input type="text" id="categorie" name="categorie" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="thème">Thème :</label>
+                            <input type="text" id="thème" name="thème" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="salle">Salle :</label>
+                            <select id="salle" name="salle" required>
+                                <option value="Salle 101">Salle 101</option>
+                                <option value="Salle 102">Salle 102</option>
+                                <option value="Salle 103">Salle 103</option>
+                                <option value="Salle 104">Salle 104</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Résumer court:  :</label>
+                            <textarea id="Resumer-court" name="Resumer-court" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Résumer long:  :</label>
+                            <textarea id="Resumer-long" name="Resumer-long" required></textarea>
+                        </div>
+
+                        <div class="form-group-button">
+                            <button type="submit" class="bouton-ajouter">Ajouter</button>
+                            <label for="actif" id="bouton">Annuler</label> 
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="cases-container">
+
+
+                <!-- Conference 1-->
+                <div class="case-conférence">
+                    <input type="checkbox" id="conf1" hidden >
+                    <div class="contenu-conf">
+                        <p class="date">Lundi 28 avril 2025</p>
+                        <hr>
+                        <p class="type">Conférence</p>
+                        <h2 class="conf_titre">Conférence sur la nature</h2>
+                        <p class="langues">Langue : anglais</p>
+                        <p class="duree">16h - 180min</p>
+                        <p class="categorie">Educatif</p>
+                        <p class="salle"> Salle 202</p>
+                        <p class="place"> 200 places restantes</p>
+                        <div class="actions">
+                            <button class="modifier">Modifier</button>
+                            <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
+                            <label for="conf1">
+                                <img src="image/supprime.png" alt="Bouton_supprimer">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="contenu-conf-supp">
+                        <p>Vous venez de supprimer</p>
+                        <h2 class="conf_titre">Conférence sur la nature</h2>
+                        <label for="conf1">
+                            Annuler
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Conference 2 -->
+
+                <div class="case-conférence">
+                    <input type="checkbox" id="conf2" hidden >
+                    <div class="contenu-conf">
+                        <p class="date">Lundi 2 mai 2025</p>
+                        <hr>
+                        <p class="type">Présentation</p>
+                        <h2 class="conf_titre">Conférence sur l'histoire</h2>
+                        <p class="langues">Langue : allemand</p>
+                        <p class="duree">12h00 - 90min</p>
+                        <p class="categorie">Educatif</p>
+                        <p class="salle"> Salle 301</p>
+                        <p class="place"> 58 places restantes</p>
+                        <div class="actions">
+                            <button class="modifier">Modifier</button>
+                            <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
+                            <label for="conf2">
+                                <img src="image/supprime.png" alt="Bouton_supprimer">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="contenu-conf-supp">
+                        <p>Vous venez de supprimer</p>
+                        <h2 class="conf_titre">Conférence sur la nature</h2>
+                        <label for="conf2">
+                            Annuler
+                        </label>                    
+                    </div>
+                </div>
+        </section>
+    </main>
+</body>
+</html>

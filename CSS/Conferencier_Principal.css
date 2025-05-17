@@ -1,0 +1,287 @@
+body{
+    margin:0;
+    background-color: #717BBD ;
+    font-family: "Itim", sans-serif;
+    color: white;
+}
+
+
+/* ---Header début-------------------------------------------------------- */ 
+header{
+    background-color: #7093BC;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.452);
+    align-items: center;
+}
+
+.logo-image{
+    width: 30% ;
+}
+
+.logo-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 5px;
+}
+
+.sous-menu nav{
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+}
+.sous-menu nav a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-family: 'Itim',sans-serif;
+    font-weight: bold;
+
+
+}
+.sous-menu{
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
+}
+
+
+.transition-band {
+    height: 50px;
+    background: linear-gradient(to bottom, #7093BC, #717BBD);
+
+}
+
+.sous-menu nav a:hover{
+    color: #4654AE;
+    transition: 0.3s;
+}
+/* ---Header fin-------------------------------------------------------- */ 
+
+
+/* ---Main début -------------------------------------------------------- */
+main{
+    text-align: center;
+}
+/*------------------------*/
+.titre{
+    font-size: 1em;
+    letter-spacing: 0.3vw;
+    margin-top: 20px;
+    /*
+    margin-top: 3vh;
+    margin-bottom: 3vh;*/
+    color: white;
+}
+.ajouter-container{
+    margin-bottom: 4em;
+    margin-top: 2em;
+}
+.ajouter-container label{
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 0.7em;
+    font-size: 1em;
+    color: white;
+    padding: 0.7em 0.5em ;
+    margin: 2em;
+    cursor: pointer;  
+}
+
+.ajouter-contenu{
+    display: none;
+    background-color: #dde3ff;
+    max-width: 700px;
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);    
+}
+.form-group{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.form-group label {
+    width: 10em;
+    color: black;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+    flex-grow: 1;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 2px solid black;
+    background-color: #7093BC;
+    color: white;
+}
+form button{
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 0.7em;
+    font-size: 1em;
+    color: white;
+    padding: 0.7em 0.5em ;
+    margin: 2em;
+    cursor: pointer;    
+}
+textarea{
+    height: 10em;
+}
+.form-group-button{
+    display: flex;
+}
+.form-group-button label{
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 0.7em;
+    font-size: 1em;
+    color: white;
+    padding: 0.7em 0.5em ;
+    margin: 2em;
+    width: 6em;
+    cursor: pointer; 
+
+}
+
+input[type="checkbox"]:checked ~ .ajouter-contenu{
+    display: block;
+}
+/*------------------------*/
+.cases-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3vw;
+    
+}
+/*------------------------*/
+.case-conférence  {
+    color: rgb(0, 0, 0);
+    background-color: #ecefff;
+    text-align: left;
+    text-decoration: none;
+    padding: 1vw 3vw ;
+    width: 280px;
+    max-height: 400px;
+    border-radius: 2vw;
+}
+
+.contenu-conf{
+   display: block; 
+}
+.contenu-conf-supp{
+    display: none;
+    text-align: center;
+    color: red;
+}
+.contenu-conf-supp h2{
+    color: black;
+}
+.contenu-conf-supp label {
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 0.7em;
+    font-size: 1em;
+    color: white;
+    padding: 0.7em 0.5em ;
+    margin: 2em;
+    cursor: pointer;
+}
+.actions label {
+    cursor: pointer;
+}
+input[type="checkbox"]:checked ~ .contenu-conf{
+    display: none;
+}
+input[type="checkbox"]:checked ~ .contenu-conf-supp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*------------------------*/
+
+.date{
+    text-align: center;
+}
+/*------------------------*/
+.conf_titre{
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0;
+}
+/*------------------------*/
+.categorie{
+    float: right;
+    font-size: 1em;
+    margin-top: -1.5em;
+}
+/*------------------------*/
+.duree{
+    margin: 0;
+}
+/*------------------------*/
+.langues{
+    margin-top: 10%;
+    margin-bottom: 1%;
+}
+/*------------------------*/
+.salle{
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 1em ;
+    margin-bottom: 0em;
+}
+/*------------------------*/
+.place{
+    text-align: center;
+    color: #008000;
+    font-weight: bold;
+    margin: 0;
+}   
+/*------------------------*/
+.actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+/*------------------------*/
+.modifier {
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 0.7em;
+    height: 2em;
+    width: 5em;
+    font-size: 1em;
+    color: white;
+}
+/*------------------------*/
+.modifier:hover {
+    background-color: #3870af;
+}
+/*------------------------*/
+.valider{
+    border-style: none;
+    background: none;
+    cursor: pointer;
+}
+/*------------------------*/
+.refuser{
+    border-style: none;
+    background: none;
+    cursor: pointer;
+}
+
+
+
+/* ---Main fin -------------------------------------------------------- */
