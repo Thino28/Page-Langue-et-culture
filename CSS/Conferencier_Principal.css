@@ -99,7 +99,7 @@ main{
     margin: 2em auto;
     padding: 2em;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);    
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 .form-group{
     display: flex;
@@ -151,6 +151,47 @@ textarea{
 
 input[type="checkbox"]:checked ~ .ajouter-contenu{
     display: block;
+    
+}
+
+/* Modifier */
+.modifier{
+    display: none;
+}
+.modifier-container{
+    margin-bottom: 4em;
+}
+.modifier-container .modifier-label{
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 0.7em;
+    font-size: 1em;
+    color: white;
+    padding: 0.7em 0.5em ;
+    margin: 2em;
+    cursor: pointer;  
+}
+.modifier-contenu{
+    display: block;
+    background-color: #dde3ff;
+    max-width: 700px;
+    margin: 2em auto;
+    padding: 1em;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.form:checked ~ .modifier{
+    display: block;
+}
+.modifier-bouton label{
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 0.7em;
+    font-size: 1em;
+    color: white;
+    padding: 0.7em 0.5em ;
+    margin: 2em;
+    cursor: pointer; 
 }
 /*------------------------*/
 .cases-container{
@@ -196,14 +237,17 @@ input[type="checkbox"]:checked ~ .ajouter-contenu{
 .actions label {
     cursor: pointer;
 }
-input[type="checkbox"]:checked ~ .contenu-conf{
+.supp:checked ~ .contenu-conf{
     display: none;
 }
-input[type="checkbox"]:checked ~ .contenu-conf-supp{
+.supp:checked ~ .contenu-conf-supp{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.supp:checked ~ .modifier{
+    display: none;
 }
 
 /*------------------------*/
@@ -256,19 +300,7 @@ input[type="checkbox"]:checked ~ .contenu-conf-supp{
     margin-bottom: 1em;
 }
 /*------------------------*/
-.modifier {
-    background-color: #7093BC;
-    border-style: none;
-    border-radius: 0.7em;
-    height: 2em;
-    width: 5em;
-    font-size: 1em;
-    color: white;
-}
-/*------------------------*/
-.modifier:hover {
-    background-color: #3870af;
-}
+
 /*------------------------*/
 .valider{
     border-style: none;
