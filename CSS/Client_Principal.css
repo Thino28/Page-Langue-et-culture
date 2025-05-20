@@ -155,15 +155,6 @@ main{
 
 /*---parti inscription/inviter-------------------------------------------------------------------------------*/
 
-.bouton {
-    background-color: #7093BC;
-    border-radius: 0.7em;
-    padding: 0.5em 1em;
-    color: white;
-    cursor: pointer;
-    display: inline-block;
-}
-
 .inscrire {
     background-color: #7093BC;
     border-radius: 0.7em;
@@ -181,13 +172,20 @@ label.inscrire:hover {
 .details-invitation{
     max-height: 0;
     text-align: center;
-    overflow: hidden;
+    display: none;
 }
 .bouton-invitation:checked ~ .details-invitation {
-    max-height: 300px; 
+    display: block;
 }
 .bouton-invitation:checked ~ .inviter {
     display: none;
+}
+
+.annuler:checked ~ .details-invitation {
+    display: none;
+}
+.annuler:checked ~ .inviter {
+    display: block;
 }
 
 /*------------------------*/

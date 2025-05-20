@@ -1,9 +1,9 @@
 <?php 
     include("cnx_parti.inc.php");
-    $num= explode("_",$_POST['insc']);
+    $num= explode("_",$_POST['desin']);
     $cnx -> beginTransaction();
     try {
-        $cnx->exec("INSERT INTO vdeux.inscrit VALUES ($num[0],$num[1])");
+        $cnx->exec("DELETE FROM vdeux.inscrit WHERE num_conf=$num[0] AND num_parti=$num[1]");
         $cnx -> commit();
     } catch (PDOException $e){
         $cnx -> rollback();

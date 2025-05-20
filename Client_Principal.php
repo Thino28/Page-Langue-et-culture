@@ -93,18 +93,35 @@
                             echo "<p class='salle'> Salle $ligne->num_salle aile $ligne->aile</p>";
                             echo "<p class='place'> $capa places restantes</p>";
 
-                            $couple_conf_parti = (string)$ligne->num_conf."_".(string)$_COOKIE['id'];
+                            $idconf = $ligne->num_conf;
                             $id=$_COOKIE['id'];
-                            $inscriptions = $cnx -> query("SELECT * FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf AND num_parti=$id");
+                            $couple_conf_parti = (string)$idconf."_".(string)$id;
+                            $inscriptions = $cnx -> query("SELECT * FROM vdeux.inscrit WHERE num_conf=$idconf AND num_parti=$id");
                             $verifInscrit =$inscriptions->fetch(PDO::FETCH_OBJ);
                             if ($verifInscrit) {
-                                echo "vous etes inscrit";
+                                echo "<p>Vous vous êtes inscrit.</p>";
+                                echo "<form action='script_php/desinscription_conf.php' method='post'>";
+                                echo "<input type='submit' value='$couple_conf_parti' name='desin' id='desinscrire$idconf' hidden>";
+                                echo "<label class='inscrire' for='desinscrire$idconf'>Desinscription</label></form>";
+
+                                echo "<p>Voulez-vous inviter quelqu’un ?</p>";
+                                echo "<input type='checkbox' id='inviter$idconf' class='bouton-invitation' hidden>";
+                                echo "<label for='inviter$idconf' class='inviter'>Inviter</label>";
+
+                                echo "<form class='details-invitation' action='script_php/invitation.php' method='post'>";
+                                echo "<input type='email' id='mail$idconf' class='mail' placeholder='Insérer un mail'>";
+
+                                echo "<input type='submit' id='valider$idconf' class='validation' name='inv' hidden>";
+                                echo "<label for='valider$idconf' class='inviter'>Valider</label>";
+                                
+                                echo "<input type='checkbox' id='annuler$idconf' class='annuler' hidden>";
+                                echo "<label for='annuler$idconf' class='inviter'>Annuler</label></form>";
                             } else {
                                 echo "<form action='script_php/inscription_conf.php' method='post'>";
-                                echo "<input type='submit' value='$couple_conf_parti' name='insc_inv' id='inscrire' hidden>";
-                                echo "<label class='bouton' for='inscrire'>Inscription</label></form>";
+                                echo "<input type='submit' value='$couple_conf_parti' name='insc' id='inscrire$idconf' hidden>";
+                                echo "<label class='inscrire' for='inscrire$idconf'>Inscription</label></form>";
                             }
-                            
+                            echo "</div>";
                            
                             
                             
@@ -122,7 +139,7 @@
                             //echo "<label for='inviter1' class='inviter'>Annuler</label></div>";
                             
                             
-                            echo "</div>";
+                            
                         }
                     } catch (PDOException $e) {
                         echo "<h1>Une erreur est survenue, veuillez patienter.$e</h1>";
