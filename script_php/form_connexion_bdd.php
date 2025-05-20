@@ -21,7 +21,7 @@
             exit();
         }
         if ($conf) {
-            header('location:form_connexion.html');  //CHANGER REDIRECTION pages conférencier
+            header('location:..\form_connexion.html');  //CHANGER REDIRECTION pages conférencier
             exit();
         }
         if ($id==1 || $id==2) {

@@ -68,6 +68,10 @@ main{
     text-align: center;
 }
 /*------------------------*/
+.type {
+    text-align: left;
+}
+/*------------------------*/
 .titre{
     font-size: 1em;
     letter-spacing: 0.3vw;
@@ -150,20 +154,17 @@ main{
 }  
 
 /*---parti inscription/inviter-------------------------------------------------------------------------------*/
-.details-inscription {
-    max-height: 0;
-    text-align: center;
-    overflow: hidden;
+
+.bouton {
+    background-color: #7093BC;
+    border-radius: 0.7em;
+    padding: 0.5em 1em;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
 }
-/*------------------------*/
-.bouton-inscription:checked ~ .details-inscription {
-    max-height: 300px; 
-}
-.bouton-inscription:checked ~ .inscrire {
-    display: none;
-}
-/*------------------------*/
-label.inscrire {
+
+.inscrire {
     background-color: #7093BC;
     border-radius: 0.7em;
     padding: 0.5em 1em;

@@ -67,6 +67,7 @@ header{
 main{
     text-align: center;
 }
+
 /*------------------------*/
 .titre{
     font-size: 1em;
@@ -93,7 +94,7 @@ main{
     background-color: #ecefff;
     padding: 1vw 3vw ;
     width: 280px;
-    max-height: 400px;
+    height: fit-content;
     border-radius: 2vw;
     text-align: left;
 }
@@ -103,9 +104,15 @@ main{
     text-align: center;
 }
 /*------------------------*/
+
+.resume_long{
+    text-align: justify;
+}
+/*------------------------*/
+
 .conf_titre{
     text-align: center;
-    font-size: 2.5em;
+    font-size: 2em;
     margin: 0;
 }
 /*------------------------*/

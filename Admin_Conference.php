@@ -62,7 +62,7 @@
                 <?php
                     include("script_php\cnx_admin.inc.php");
                     try {
-                        $result = $cnx -> query("SELECT num_conf,resume_court,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle");
+                        $result = $cnx -> query("SELECT num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle");
                         while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
                             $capacite = $ligne->capacite;
                             $inscrit = $cnx -> query("SELECT COUNT(*) FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf");
@@ -79,6 +79,7 @@
                             echo "<p class='date'>$dt</p><hr>";
                             echo "<p class='type'>$ligne->type_intervention</p>"; 
                             echo "<h2 class='conf_titre'>$ligne->resume_court</h2>";
+                            echo "<p class='resume_long'>$ligne->resume_long</p>";
                             echo "<p class='langues'>Langue : $ligne->langue</p>";
                             echo "<p class='duree'>$hr - $dur"."min</p>";
                             echo "<p class='categorie'>$ligne->categorie_theme</p>";
@@ -90,7 +91,7 @@
                             echo "</div></div>";
                         }
                     } catch (PDOException $e) {
-                        echo $e;
+                        echo "<h1>Une erreur est survenue, veuillez patienter.</h1>";
                     }
                 ?>
 
