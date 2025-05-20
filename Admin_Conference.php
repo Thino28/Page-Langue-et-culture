@@ -62,7 +62,7 @@
                 <?php
                     include("script_php\cnx_admin.inc.php");
                     try {
-                        $result = $cnx -> query("SELECT num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle");
+                        $result = $cnx -> query("SELECT num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle ORDER BY date_conf,horaire");
                         while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
                             $capacite = $ligne->capacite;
                             $inscrit = $cnx -> query("SELECT COUNT(*) FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf");

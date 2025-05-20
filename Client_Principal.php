@@ -69,7 +69,7 @@
                 <?php
                     include("script_php\cnx_parti.inc.php");
                     try {
-                        $result = $cnx -> query("SELECT num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle ");
+                        $result = $cnx -> query("SELECT num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle ORDER BY date_conf,horaire");
                         while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
                             $capacite = $ligne->capacite;
                             $inscrit = $cnx -> query("SELECT COUNT(*) FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf");
@@ -109,11 +109,9 @@
                                 echo "<label for='inviter$idconf' class='inviter'>Inviter</label>";
 
                                 echo "<form class='details-invitation' action='script_php/invitation.php' method='post'>";
-                                echo "<input type='email' id='mail$idconf' class='mail' placeholder='Insérer un mail'>";
-
-                                echo "<input type='submit' id='valider$idconf' class='validation' name='inv' hidden>";
+                                echo "<input name='inv' type='email' id='mail$idconf' class='mail' placeholder='Insérer un mail'>";
+                                echo "<input name='valinv' value='$couple_conf_parti' type='submit' id='valider$idconf' class='validation' hidden>";
                                 echo "<label for='valider$idconf' class='inviter'>Valider</label>";
-                                
                                 echo "<input type='checkbox' id='annuler$idconf' class='annuler' hidden>";
                                 echo "<label for='annuler$idconf' class='inviter'>Annuler</label></form>";
                             } else {
@@ -122,24 +120,6 @@
                                 echo "<label class='inscrire' for='inscrire$idconf'>Inscription</label></form>";
                             }
                             echo "</div>";
-                           
-                            
-                            
-                            
-                            //echo "<div class='details-inscription'><p class='confirmation'>Vous vous êtes inscrit.</p>";
-                            //echo "<label for='inscrire1' class='inscrire' onclick='resetChekboxe('1')'>Se désinscrire</label>";
-                           // echo "<p>Voulez-vous inviter quelqu’un ?</p>";
-                            //echo "<input type='checkbox' id='inviter1' class='bouton-invitation' hidden>";
-                            
-                           // echo "<div class='details-invitation'>";
-                           // echo "<input type='email' id='mail1' class='mail' placeholder='Insérer un mail'>";
-                            //echo "<input type='checkbox' id='valider1' class='validation' hidden>";
-                            //echo "<label for='valider1' class='inviter'>Valider</label>";
-                            //echo "<input type='checkbox' id='inviter1' class='annuler' hidden>";
-                            //echo "<label for='inviter1' class='inviter'>Annuler</label></div>";
-                            
-                            
-                            
                         }
                     } catch (PDOException $e) {
                         echo "<h1>Une erreur est survenue, veuillez patienter.$e</h1>";
@@ -158,7 +138,7 @@
      pour que l’interface se réinitialise proprement
      elle est appelée avec un identifiant propre à chaque conférence, 
      ce qui permet de cibler uniquement les bonnes cases sans toucher aux autres -->
-
+<!--
     <script>
         function resetChekboxe(id) {
             const sousCheckboxes = ['inviter', 'mail', 'valider'];
@@ -173,7 +153,7 @@
             });
         }
     </script>
-
+-->
 </body>
 <!-------------------------------------------------------------------------------------------------->
 </html>
