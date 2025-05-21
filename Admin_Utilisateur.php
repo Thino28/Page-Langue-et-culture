@@ -66,9 +66,10 @@
                         include ("script_php/cnx_admin.inc.php");
                         $result = $cnx -> query("SELECT * FROM vdeux.participant WHERE titre_conf='true'");
                         while ($ligne = $result->fetch(PDO::FETCH_OBJ)) {
-                            echo "<div class='personne'><p>$ligne->nom $ligne->prenom</p>";
+                            echo "<form action='script_php/supp_compte.php' method='POST' class='personne'><p>$ligne->nom $ligne->prenom</p>";
                             echo "<div class='actions'><div class='supprime'>";
-                            echo "<label><input type='button' value='Supprimer'></label></div></div></div>";
+                            echo "<input type='submit' value='$ligne->num_parti' name='supp' id='supp$ligne->num_parti' hidden>";
+                            echo "<label for='supp$ligne->num_parti'>Supprimer</label></div></div></form>";
                         }
                     ?>
 
@@ -116,9 +117,10 @@
                         include ("script_php/cnx_admin.inc.php");
                         $result = $cnx -> query("SELECT * FROM vdeux.participant WHERE titre_conf!='true' AND num_parti>2");
                         while ($ligne = $result->fetch(PDO::FETCH_OBJ)) {
-                            echo "<div class='personne'><p>$ligne->nom $ligne->prenom</p>";
+                            echo "<form action='script_php/supp_compte.php' method='POST' class='personne'><p>$ligne->nom $ligne->prenom</p>";
                             echo "<div class='actions'><div class='supprime'>";
-                            echo "<label><input type='button' value='Supprimer'></label></div></div></div>";
+                            echo "<input type='submit' value='$ligne->num_parti' name='supp' id='supp$ligne->num_parti' hidden>";
+                            echo "<label for='supp$ligne->num_parti'>Supprimer</label></div></div></form>";
                         }
                     ?>
                 <!-- Participant
@@ -144,11 +146,12 @@
                         </div>
                     </div>-->
                 </div>
+                    <!-- 
                 <div class="validation-global">
                     <label>
                         <input type="button" value="Valider">
                     </label>
-                </div>
+                </div>-->
             </div>
         </section>
     </main>

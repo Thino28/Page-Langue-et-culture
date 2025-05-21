@@ -139,7 +139,7 @@ input[type="radio"] {
   cursor: pointer;
 }
 /*------------------------*/
-.supprime input[type="button"]{
+.supprime input[type="submit"]{
     background-color: #7093BC;
     border-radius: 0.7em;
     border-style: none;
