@@ -25,17 +25,9 @@
 
         <div class="sous-menu">
             <nav>
-                <a href="#accueil" >
+                <a href="Client_Principal.php" >
                     <img src="image/Vector.png" alt="home" class="logo-icon">
                     Accueil
-                </a>
-                <a href="#conférence" >
-                    <img src="image/Icon_conférence.png" alt="icon_conference" class="logo-icon">
-                    Gestion  conférence
-                </a>
-                <a href="#Contact" >
-                    <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
-                    Gestion utilisateur
                 </a>
                 <a href="#profil" >
                     <img src="image/icon Compte blanc.png" alt="" class="logo-icon">

@@ -62,7 +62,7 @@
                 <?php
                     include("script_php\cnx_admin.inc.php");
                     try {
-                        $result = $cnx -> query("SELECT num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle ORDER BY date_conf,horaire");
+                        $result = $cnx -> query("SELECT DISTINCT conference.num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle JOIN vdeux.organise ON conference.num_conf=organise.num_conf ORDER BY date_conf,horaire");
                         while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
                             $capacite = $ligne->capacite;
                             $inscrit = $cnx -> query("SELECT COUNT(*) FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf");
@@ -86,8 +86,7 @@
                             echo "<p class='salle'> Salle $ligne->num_salle aile $ligne->aile</p>";
                             echo "<p class='place'> $capa places restantes</p>";
                             echo "<div class='actions'><button class='modifier'>Modifier</button>";
-                            echo "<button class='valider'><img src='image/valide.png' alt='Bouton_valider'></button>";
-                            echo "<button class='refuser'><img src='image/supprime.png' alt='Bouton_supprimer'></button>";
+                            echo "<form method='post' action='script_php/supp_conf.php'><button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'><img src='image/supprime.png' alt='Bouton_supprimer'></button></form>";
                             echo "</div></div>";
                         }
                     } catch (PDOException $e) {
