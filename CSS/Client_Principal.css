@@ -170,7 +170,6 @@ label.inscrire:hover {
 }
 /*------------------------*/
 .details-invitation{
-    max-height: 0;
     text-align: center;
     display: none;
 }
