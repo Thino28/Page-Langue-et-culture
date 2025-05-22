@@ -9,6 +9,14 @@
 </head>
 <body>
     <header>
+        <?php
+            session_start();
+            include("script_php/test_cookie.php");
+            if (isset($_COOKIE['conf']) && ($_COOKIE['conf']!=true)) {
+                header('location:choix.html');
+                exit();
+            }
+        ?>
         <div class="logo">
             <img src="image/Foreign Language Course.png" alt="Logo" class="logo-image">
         </div>
@@ -24,7 +32,14 @@
                     Gestion  conférence
                 </a>
                 <a href="#profil" >
-                    <img src="image/icon Compte blanc.png" alt="" class="logo-icon">>
+                    <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
+                    <?php
+                        if (isset($_COOKIE['prenom'])){
+                            echo $_COOKIE['prenom'];
+                        } else {
+                            echo "Profil";
+                        }
+                    ?>
                 </a>
             </nav>
         </div>
@@ -109,79 +124,53 @@
             </div>
             <input type="checkbox" id="actif2" class="form" hidden > 
             <div class="cases-container">
-                <!-- Conference 1-->
-                <div class="case-conférence">
-                    <input type="checkbox" id="conf1" class="supp" hidden  >
-                    <div class="contenu-conf">
-                        <p class="date">Lundi 28 avril 2025</p>
-                        <hr>
-                        <p class="type">Conférence</p>
-                        <h2 class="conf_titre">Conférence sur la nature</h2>
-                        <p class="langues">Langue : anglais</p>
-                        <p class="duree">16h - 180min</p>
-                        <p class="categorie">Educatif</p>
-                        <p class="salle"> Salle 202</p>
-                        <p class="place"> 27 personnes se sont inscrit</p>
-                        <div class="actions">
-                            <div class="modifier-bouton">
-                                <label for="actif2">
-                                    Modifier
-                                </label>                                
-                            </div>
-                            <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
-                            <label for="conf1">
-                                <img src="image/supprime.png" alt="Bouton_supprimer">
-                            </label>
-                        </div>
-                    </div>                   
-
-                    <div class="contenu-conf-supp">
-                        <p>Vous venez de supprimer</p>
-                        <h2 class="conf_titre">Conférence sur la nature</h2>
-                        <label for="conf1">
-                            Annuler
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Conference 2 -->
-
-                <div class="case-conférence">
-                    <input type="checkbox" id="conf2" class="supp" hidden >
-                    <div class="contenu-conf">
-                        <p class="date">Lundi 2 mai 2025</p>
-                        <hr>
-                        <p class="type">Présentation</p>
-                        <h2 class="conf_titre">Conférence sur l'histoire</h2>
-                        <p class="langues">Langue : allemand</p>
-                        <p class="duree">12h00 - 90min</p>
-                        <p class="categorie">Educatif</p>
-                        <p class="salle"> Salle 301</p>
-                        <p class="place"> 58 places restantes</p>
-                        <div class="actions">
-                            <div class="modifier-bouton">
-                                <label for="actif2">
-                                    Modifier
-                                </label>                                
-                            </div>
-                            <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
-                            <label for="conf2">
-                                <img src="image/supprime.png" alt="Bouton_supprimer">
-                            </label>
-                        </div>
-                    </div>                   
-
-                    <div class="contenu-conf-supp">
-                        <p>Vous venez de supprimer</p>
-                        <h2 class="conf_titre">Conférence sur la nature</h2>
-                        <label for="conf2">
-                            Annuler
-                        </label>                    
-                    </div>
-                </div>
+                <?php
+                    include("script_php\cnx_parti.inc.php");
+                    try {
+                        $id=$_COOKIE['id'];
+                        $result = $cnx -> query("SELECT DISTINCT conference.num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle JOIN vdeux.organise ON conference.num_conf=organise.num_conf WHERE organise.num_parti=$id ORDER BY date_conf,horaire");
+                        while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
+                            $inscrit = $cnx -> query("SELECT COUNT(*) FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf");
+                            $insc = $inscrit->fetch(PDO::FETCH_OBJ);
+                            $count = $insc->count;
+                            setlocale(LC_TIME, 'french');
+                            $date = new DateTime($ligne->date_conf);
+                            $dt = strftime('%A %d %B %Y', $date->getTimestamp());
+                            $hr = date("H\hi", strtotime($ligne->horaire));
+                            list($heures, $minutes, $secondes) = explode(":", $ligne->duree);
+                            $dur = ($heures * 60) + $minutes;
+                            echo "<div class='case-conférence'>";
+                            echo "<p class='date'>$dt</p><hr>";
+                            echo "<p class='type'>$ligne->type_intervention</p>"; 
+                            echo "<h2 class='conf_titre'>$ligne->resume_court</h2>";
+                            echo "<p class='resume_long'>$ligne->resume_long</p>";
+                            echo "<p class='langues'>Langue : $ligne->langue</p>";
+                            echo "<p class='duree'>$hr - $dur"."min</p>";
+                            echo "<p class='categorie'>$ligne->categorie_theme</p>";
+                            echo "<p class='salle'> Salle $ligne->num_salle aile $ligne->aile</p>";
+                            echo "<p class='place'> $count personne(s) inscrite(s)</p>";
+                            echo "<div class='actions'>";
+                            echo "<input type='checkbox' id='modifier$ligne->num_conf' hidden>";
+                            echo "<label for='modifier$ligne->num_conf' class='modifier-bouton'>Modifier</label>";
+                            echo "<form method='post' action='script_php/supp_conf.php'>";
+                            echo "<button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'>";
+                            echo "<img src='image/supprime.png' alt='Bouton_supprimer'></button></form>";
+                            echo "</div></div>";
+                            /*
+                            echo "<div class='actions'> <div class='modifier-bouton'>";
+                            echo "<label for='actif2'>Modifier</label></div>";
+                            echo "<label for='conf2'><img src='image/supprime.png' alt='Bouton_supprimer'>";
+                            echo "</label></div></div>";*/
+                        }
+                    } catch (PDOException $e) {
+                        echo "<h1>Une erreur est survenue, veuillez patienter.$e</h1>";
+                    }
+                ?>
             </div>
 
-
+            <?php
+                echo "<div class='modifier'><div class='modifier-contenu'>"; 
+            ?>
             <div class="modifier">
                 <div class="modifier-contenu">
                     <form>

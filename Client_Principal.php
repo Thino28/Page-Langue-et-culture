@@ -14,7 +14,7 @@
         <?php
         session_start();
             include("script_php/test_cookie.php");
-            if (isset($_COOKIE['conf']) && ($_COOKIE['conf']='true')) {
+            if (isset($_COOKIE['conf']) && ($_COOKIE['conf']==true)) {
                 header('location:choix.html');
                 exit();
             }
@@ -149,3 +149,18 @@
 </body>
 <!-------------------------------------------------------------------------------------------------->
 </html>
+
+
+
+<div class="actions">
+        <div class="modifier-bouton">
+            <label for="actif2">
+                Modifier
+            </label>                                
+        </div>
+        <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
+        <label for="conf2">
+            <img src="image/supprime.png" alt="Bouton_supprimer">
+        </label>
+    </div>
+</div>       

@@ -14,7 +14,7 @@
          echo $e;
       }
    }
-   header('location:..\Conferencier_Principal.php');
+   header('location:..\Admin_Conference.php');
    exit();
 
 ?>

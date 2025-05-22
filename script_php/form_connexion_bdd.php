@@ -21,7 +21,7 @@
             exit();
         }
         if ($conf) {
-            header('location:..\form_connexion.html');  //CHANGER REDIRECTION pages conférencier
+            header('location:..\Conferencier_Principal.php');  
             exit();
         }
         if ($id==1 || $id==2) {

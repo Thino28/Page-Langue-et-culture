@@ -86,7 +86,8 @@
                             echo "<p class='salle'> Salle $ligne->num_salle aile $ligne->aile</p>";
                             echo "<p class='place'> $capa places restantes</p>";
                             echo "<div class='actions'><button class='modifier'>Modifier</button>";
-                            echo "<form method='post' action='script_php/supp_conf.php'><button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'><img src='image/supprime.png' alt='Bouton_supprimer'></button></form>";
+                            echo "<form method='post' action='script_php/supp_conf_admin.php'><button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'>";
+                            echo "<img src='image/supprime.png' alt='Bouton_supprimer'></button></form>";
                             echo "</div></div>";
                         }
                     } catch (PDOException $e) {

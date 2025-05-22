@@ -8,6 +8,7 @@
          $cnx->exec("DELETE FROM vdeux.conferencier WHERE num_parti=$num");
          $cnx->exec("DELETE FROM vdeux.pro WHERE num_parti=$num");
          $cnx->exec("DELETE FROM vdeux.inscrit WHERE num_parti=$num");
+         $cnx->exec("DELETE FROM vdeux.historique_invitation WHERE num_parti=$num OR num_parti_1=$num");
          $cnx->exec("DELETE FROM vdeux.participant WHERE num_parti=$num");
          $cnx -> commit();
       } catch (PDOException $e){
@@ -15,7 +16,6 @@
          echo $e;
       }
    }
-   //header('location:..\Admin_Utilisateur.php');
-   //exit();
-
+   header('location:..\Admin_Utilisateur.php');
+   exit();
 ?>
