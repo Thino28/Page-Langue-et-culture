@@ -54,78 +54,73 @@
                     Vos conférences :
                 </h1>
             </div>
-            <div class="ajouter">
-                <input type="checkbox" id="actif" hidden> 
-                <div class="ajouter-container">
-                    <label for="actif">
-                        Ajouter
-                    </label>
-                </div>
-                <div class="ajouter-contenu">
-                    <form>
-                        <div class="form-group">
-                            <label for="titre">Titre de la conférence :</label>
-                            <input type="text" id="titre" name="titre" required>
-                        </div>
+            <?php
+                include("script_php\cnx_parti.inc.php");
+                echo "<div class='ajouter'>";
+                echo "<input type='checkbox' id='actif' hidden>";
+                echo "<div class='ajouter-container'>";
+                echo "<label for='actif'> Ajouter</label></div>";
+                echo "<div class='ajouter-contenu'>";
+                echo "<form method='post' action='script_php/ajout_conf.php'>";
+                echo "<div class='form-group'>";
+                echo "<label for='conferencier2'>Mail d'un deuxième conferencier :</label>";
+                echo "<input type='mail' id='mail' name='mail'>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='date'>Date :</label>";
+                echo "<input type='date' id='date' name='date' required>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='horaire'>Horaire :</label>";
+                echo "<input type='time' id='horaire' name='horaire' required>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='duree'>Durée :</label>";
+                echo "<input type='time' id='duree' name='duree' required>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='langue'>Langue :</label>";
+                echo "<input type='text' id='langue' name='langue' required>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='Type'>Type d'intervention :</label>";
+                echo "<input type='text' id='type' name='type' required>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='categorie'>Catégorie :</label>";
+                echo "<input type='text' id='categorie' name='categorie' required>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='salle'>Salle :</label>";
+                echo "<select id='salle' name='salle' required>";
+                $result2 = $cnx -> query("SELECT * FROM vdeux.salle ORDER BY num_salle");
+                while($ligne =$result2->fetch(PDO::FETCH_OBJ)) {
+                    echo "<option value='$ligne->num_salle'>Salle $ligne->num_salle aile $ligne->aile capacite $ligne->capacite personnes</option>";
+                }
+                echo "</select>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='description'>Titre/Résumer court: </label>";
+                echo "<textarea id='Resumer-court' name='Resume-court' required></textarea>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                echo "<label for='description'>Résumer long: </label>";
+                echo "<textarea id='Resumer-long' name='Resume-long' required></textarea>";
+                echo "</div>";
+                echo "<div class='form-group-button'>";
+                echo "<button type='submit' class='bouton-ajouter'>Ajouter</button>";
+                echo "<label for='actif' id='bouton'>Annuler</label>";
+                echo "</div>";
+                echo "</form>";
+                echo "</div>";
+                echo "</div>";
 
-                        <div class="form-group">
-                            <label for="date">Date :</label>
-                            <input type="date" id="date" name="date" required>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="duree">Durée :</label>
-                            <input type="text" id="duree" name="duree" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="horaire">Horaire :</label>
-                            <input type="text" id="horaire" name="horaire" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="langue">Langue :</label>
-                            <input type="text" id="langue" name="langue" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="Type">Type :</label>
-                            <input type="text" id="type" name="type" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="categorie">Catégorie :</label>
-                            <input type="text" id="categorie" name="categorie" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="thème">Thème :</label>
-                            <input type="text" id="thème" name="thème" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="salle">Salle :</label>
-                            <select id="salle" name="salle" required>
-                                <option value="Salle 101">Salle 101</option>
-                                <option value="Salle 102">Salle 102</option>
-                                <option value="Salle 103">Salle 103</option>
-                                <option value="Salle 104">Salle 104</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Résumer court:  :</label>
-                            <textarea id="Resumer-court" name="Resumer-court" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Résumer long:  :</label>
-                            <textarea id="Resumer-long" name="Resumer-long" required></textarea>
-                        </div>
-
-                        <div class="form-group-button">
-                            <button type="submit" class="bouton-ajouter">Ajouter</button>
-                            <label for="actif" id="bouton">Annuler</label> 
-                        </div>
-                    </form>
-                </div>
-            </div>
+            ?>
+            
             <input type="checkbox" id="actif2" class="form" hidden > 
             <div class="cases-container">
                 <?php
-                    include("script_php\cnx_parti.inc.php");
                     try {
                         $id=$_COOKIE['id'];
                         $result = $cnx -> query("SELECT DISTINCT conference.num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle JOIN vdeux.organise ON conference.num_conf=organise.num_conf WHERE organise.num_parti=$id ORDER BY date_conf,horaire");
@@ -150,27 +145,80 @@
                             echo "<p class='salle'> Salle $ligne->num_salle aile $ligne->aile</p>";
                             echo "<p class='place'> $count personne(s) inscrite(s)</p>";
                             echo "<div class='actions'>";
-                            echo "<input type='checkbox' id='modifier$ligne->num_conf' hidden>";
+                            echo "<input class='modifier-check' type='checkbox' name='voir_modif' value='$ligne->num_conf' id='modifier$ligne->num_conf' hidden>";
                             echo "<label for='modifier$ligne->num_conf' class='modifier-bouton'>Modifier</label>";
                             echo "<form method='post' action='script_php/supp_conf.php'>";
                             echo "<button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'>";
                             echo "<img src='image/supprime.png' alt='Bouton_supprimer'></button></form>";
+                            echo "</div>";
+
+                            
+                            echo "<div class='modifier'><div class='modifier-contenu'>"; 
+                            echo "<form method='post' action='script_php/modif_conf.php'>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='titre'>Titre de la conférence :</label>";
+                            echo "<input type='text' id='titre' name='titre' >";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='date'>Date :</label>";
+                            echo "<input type='date' id='date' name='date' >";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='duree'>Durée :</label>";
+                            echo "<input type='text' id='duree' name='duree' >";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='horaire'>Horaire :</label>";
+                            echo "<input type='text' id='horaire' name='horaire' >";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='langue'>Langue :</label>";
+                            echo "<input type='text' id='langue' name='langue' >";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='Type'>Type :</label>";
+                            echo "<input type='text' id='type' name='type' >";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='categorie'>Catégorie :</label>";
+                            echo "<input type='text' id='categorie' name='categorie' >";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='thème'>Thème :</label>";
+                            echo "<input type='text' id='thème' name='thème' >";
+                            echo "</div>";    
+                            echo "<div class='form-group'>";
+                            echo "<label for='salle'>Salle :</label>";
+                            echo "<select id='salle' name='salle' >";
+                            $result2 = $cnx -> query("SELECT * FROM vdeux.salle ORDER BY num_salle");
+                            while($ligne =$result2->fetch(PDO::FETCH_OBJ)) {
+                                echo "<option value='$ligne->num_salle'>Salle $ligne->num_salle aile $ligne->aile capacite $ligne->capacite personnes</option>";
+                            }
+                            echo "</select>";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='description'>Résumer court:  :</label>";
+                            echo "<textarea id='Resumer-court' name='Resumer-court' ></textarea>";
+                            echo "</div>";
+                            echo "<div class='form-group'>";
+                            echo "<label for='description'>Résumer long:  :</label>";
+                            echo "<textarea id='Resumer-long' name='Resumer-long' ></textarea>";
+                            echo "</div>";
+                            echo "<div class='form-group-button'>";
+                            echo "<button type='submit' class='bouton-modifier'>Modifier</button>";
+                            echo "<label for='actif2' id='bouton'>Annuler</label>";
+                            echo "</div>";
+                            echo "</form>";
                             echo "</div></div>";
-                            /*
-                            echo "<div class='actions'> <div class='modifier-bouton'>";
-                            echo "<label for='actif2'>Modifier</label></div>";
-                            echo "<label for='conf2'><img src='image/supprime.png' alt='Bouton_supprimer'>";
-                            echo "</label></div></div>";*/
+                            echo "</div>";
+                            
                         }
                     } catch (PDOException $e) {
                         echo "<h1>Une erreur est survenue, veuillez patienter.$e</h1>";
                     }
                 ?>
             </div>
-
-            <?php
-                echo "<div class='modifier'><div class='modifier-contenu'>"; 
-            ?>
+            <!--
             <div class="modifier">
                 <div class="modifier-contenu">
                     <form>
@@ -232,7 +280,7 @@
                         </div>
                     </form>
                 </div>
-            </div> 
+            </div> -->
         </section>
     </main>
 </body>

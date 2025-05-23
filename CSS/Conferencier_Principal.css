@@ -128,6 +128,9 @@ form button{
     color: white;
     padding: 0.7em 0.5em ;
     cursor: pointer;    
+    height: fit-content;
+    margin-top: 32.5px;
+    width: 6em;
 }
 textarea{
     height: 10em;
@@ -145,7 +148,7 @@ textarea{
     margin: 2em;
     width: 6em;
     cursor: pointer; 
-
+    text-align: center;
 }
 
 input[type="checkbox"]:checked ~ .ajouter-contenu{
@@ -179,7 +182,7 @@ input[type="checkbox"]:checked ~ .ajouter-contenu{
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
-.modifier:checked ~ .modifier{
+.modifier-check:checked ~ .modifier{
     display: block;
 }
 .modifier-bouton {
@@ -190,6 +193,8 @@ input[type="checkbox"]:checked ~ .ajouter-contenu{
     width: 5em;
     font-size: 1em;
     color: white;
+    text-align: center;
+    padding-top: 0.7em;
 }
 
 .modifier-bouton:hover {
