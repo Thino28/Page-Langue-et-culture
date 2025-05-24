@@ -1,37 +1,29 @@
 <?php 
+    session_start();
     include("cnx_utilisateur.inc.php");
-    if ((isset($_POST["mail"]) && isset($_POST["mdp"])) && ($_POST["mail"]!=null && $_POST["mdp"]!=null)){
-        $mail = $_POST["mail"];
-        $mdp = $_POST["mdp"];
-        $result = $cnx -> query("SELECT num_parti,prenom,titre_pro,titre_conf FROM vdeux.participant WHERE mail='$mail' and mdp='$mdp'");
-        if ($result) {
-            $ligne = $result -> fetch(PDO::FETCH_ASSOC);
-            $prenom = $ligne['prenom'];
-            $id = $ligne['num_parti'];
-            $pro = $ligne['titre_pro'];
-            $conf = $ligne['titre_conf'];
-            setcookie("prenom","$prenom",time()+3600,'/');
-            setcookie("mail","$mail",time()+3600,'/');
-            setcookie("id","$id",time()+3600,'/');
-            setcookie("mdp","$mdp",time()+3600,'/');
-            setcookie("pro","$pro",time()+3600,'/');
-            setcookie("conf","$conf",time()+3600,'/');
-        } else {
-            header('location:..\form_connexion.html');
-            exit();
-        }
-        if ($conf) {
-            header('location:..\Conferencier_Principal.php');  
-            exit();
-        }
-        if ($id==1 || $id==2) {
-            header('location:..\Admin.php');
-            exit();
-        }
-        header('location:..\Client_Principal.php'); 
-        exit();
+    $mail = $_POST["mail"];
+    $mdp = $_POST["mdp"];
+    $result = $cnx -> query("SELECT num_parti,prenom,titre_pro,titre_conf FROM vdeux.participant WHERE mail='$mail' and mdp='$mdp'");
+    if ($result) {
+        $ligne = $result -> fetch(PDO::FETCH_ASSOC);
+        $_SESSION['prenom'] = $ligne['prenom'];
+        $_SESSION['id'] = $ligne['num_parti'];
+        $_SESSION['pro'] = $ligne['titre_pro'];
+        $_SESSION['conf'] = $ligne['titre_conf'];
+        $_SESSION['mail'] = $mail;
+        $_SESSION['mdp'] = $mdp;
     } else {
         header('location:..\form_connexion.html');
         exit();
     }
+    if ($_SESSION['id']==1 || $_SESSION['id']==2) {
+        header('location:..\Admin.php');
+        exit();
+    }
+    if ($_SESSION['conf'] == true) {
+        header('location:..\Conferencier_Principal.php');  
+        exit();
+    }
+    header('location:..\Client_Principal.php'); 
+    exit();
 ?>

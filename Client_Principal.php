@@ -12,10 +12,9 @@
     <!--HEADER------------------------------------------------------------------------------------------------>
     <header>
         <?php
-        session_start();
-            include("script_php/test_cookie.php");
-            if (isset($_COOKIE['conf']) && ($_COOKIE['conf']==true)) {
-                header('location:choix.html');
+            session_start();
+            if (isset($_SESSION['conf']) && ($_SESSION['conf']==true)) {
+                header('location:index.html');
                 exit();
             }
         ?>

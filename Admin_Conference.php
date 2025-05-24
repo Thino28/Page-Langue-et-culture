@@ -9,9 +9,9 @@
 </head>
 <body>
     <?php 
-        include("script_php/test_cookie.php");
-        if ($_COOKIE["id"]>2) {
-            header('location:choix.html');
+        session_start();
+        if ($_SESSION["id"]>2) {
+            header('location:index.html');
             exit();
         }
     ?>

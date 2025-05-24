@@ -9,9 +9,9 @@
 </head>
 <body>
     <?php 
-        include("script_php/test_cookie.php");
-        if ($_COOKIE["id"]>2) {
-            header('location:choix.html');
+        session_start();
+        if ($_SESSION["id"]>2) {
+            header('location:index.html');
             exit();
         }
     ?>
@@ -34,11 +34,11 @@
                     <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
                     Gestion utilisateur
                 </a>
-                <a href="#profil" >
+                <a href="profil.php" >
                     <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
                     <?php
-                        if (isset($_COOKIE['prenom'])){
-                            echo $_COOKIE['prenom'];
+                        if (isset($_SESSION['prenom'])){
+                            echo $_SESSION['prenom'];
                         } else {
                             echo "Profil";
                         }

@@ -107,7 +107,7 @@
       </div>
       
       <div class="autre">
-        <a href="choix.html">
+        <a href="index.html">
           <img id="retour" src="image\fleche_retour.png" alt="retour">
         </a>
         <input id="submit" type="submit" value="S'inscrire">

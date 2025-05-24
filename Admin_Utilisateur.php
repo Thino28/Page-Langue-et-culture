@@ -9,9 +9,10 @@
 </head>
 <body>
     <?php 
-        include("script_php/test_cookie.php");
-        if ($_COOKIE["id"]>2) {
-            header('location:choix.html');
+        session_start();
+        include ("script_php/cnx_admin.inc.php");
+        if ($_SESSION["id"]>2) {
+            header('location:index.html');
             exit();
         }
     ?>
@@ -34,11 +35,11 @@
                     <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
                     Gestion utilisateur
                 </a>
-                <a href="#profil" >
+                <a href="profil.php" >
                     <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
                     <?php
-                        if (isset($_COOKIE['prenom'])){
-                            echo $_COOKIE['prenom'];
+                        if (isset($_SESSION['prenom'])){
+                            echo $_SESSION['prenom'];
                         } else {
                             echo "Profil";
                         }
@@ -63,7 +64,6 @@
                 <div class="case-conférencier">
                     <h2 class="titre_conf">Conférencier</h2>
                     <?php
-                        include ("script_php/cnx_admin.inc.php");
                         $result = $cnx -> query("SELECT * FROM vdeux.participant WHERE titre_conf='true'");
                         while ($ligne = $result->fetch(PDO::FETCH_OBJ)) {
                             echo "<form action='script_php/supp_compte.php' method='POST' class='personne'><p>$ligne->nom $ligne->prenom</p>";
@@ -72,49 +72,11 @@
                             echo "<label for='supp$ligne->num_parti'>Supprimer</label></div></div></form>";
                         }
                     ?>
-
-
-                    <!-- Conférencier
-                    <div class="personne">
-                        <p>PULENDRAN Thinojan</p>
-                        <div class="actions">
-                            <div class="supprime">
-                                <label>
-                                    <input type="button" value="Supprimer">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="personne">
-                        <p>CHARLES Lucas</p>
-                        <div class="actions">
-                            <div class="supprime">
-                                <label>
-                                    <input type="button" value="Supprimer">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="personne">
-                        <p>GONZALEZ Nicolas</p>
-                        <div class="actions">
-                            <div class="supprime">
-                                <label>
-                                    <input type="button" value="Supprimer">
-                                </label>
-                            </div>
-                        </div>
-                    </div>-->
                 </div>
 
-                 
-                
                 <div class="case-participant">
                     <h2 class="titre_conf">Participant</h2>
                     <?php
-                        include ("script_php/cnx_admin.inc.php");
                         $result = $cnx -> query("SELECT * FROM vdeux.participant WHERE titre_conf!='true' AND num_parti>2");
                         while ($ligne = $result->fetch(PDO::FETCH_OBJ)) {
                             echo "<form action='script_php/supp_compte.php' method='POST' class='personne'><p>$ligne->nom $ligne->prenom</p>";
@@ -123,35 +85,7 @@
                             echo "<label for='supp$ligne->num_parti'>Supprimer</label></div></div></form>";
                         }
                     ?>
-                <!-- Participant
-                    
-                    <div class="personne">
-                        <p>TRAN Kevin</p>
-                        <div class="actions">
-                            <div class="supprime">
-                                <label>
-                                    <input type="button" value="Supprimer">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="personne">
-                        <p>SATHIANATHAN Amélia</p>
-                        <div class="actions">
-                            <div class="supprime">
-                                <label>
-                                    <input type="button" value="Supprimer">
-                                </label>
-                            </div>
-                        </div>
-                    </div>-->
                 </div>
-                    <!-- 
-                <div class="validation-global">
-                    <label>
-                        <input type="button" value="Valider">
-                    </label>
-                </div>-->
             </div>
         </section>
     </main>
