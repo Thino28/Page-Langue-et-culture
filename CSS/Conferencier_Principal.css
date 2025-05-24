@@ -151,32 +151,20 @@ textarea{
     text-align: center;
 }
 
-input[type="checkbox"]:checked ~ .ajouter-contenu{
-    display: block;
-    
+#actif:checked ~ .ajouter-contenu{
+    display: block;  
 }
 
 /* Modifier */
 .modifier{
     display: none;
 }
-.modifier-container{
-    margin-bottom: 4em;
-}
-.modifier-container .modifier-label{
-    background-color: #7093BC;
-    border-style: none;
-    border-radius: 0.7em;
-    font-size: 1em;
-    color: white;
-    padding: 0.7em 0.5em ;
-    margin: 2em;
-    cursor: pointer;  
-}
 .modifier-contenu{
     display: block;
     background-color: #dde3ff;
+    width: 80vw;
     max-width: 700px;
+    min-width: 480px;
     margin: 2em auto;
     padding: 1em;
     border-radius: 15px;
@@ -185,6 +173,11 @@ input[type="checkbox"]:checked ~ .ajouter-contenu{
 .modifier-check:checked ~ .modifier{
     display: block;
 }
+
+.annuler-check:checked ~ .modifier{
+    display: none;
+}
+
 .modifier-bouton {
     background-color: #7093BC;
     border-style: none;
@@ -216,6 +209,7 @@ input[type="checkbox"]:checked ~ .ajouter-contenu{
     text-decoration: none;
     padding: 1vw 3vw ;
     width: 280px;
+    height: min-content;
     border-radius: 2vw;
 }
 

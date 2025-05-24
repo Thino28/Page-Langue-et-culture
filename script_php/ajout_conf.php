@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include('cnx_admin.inc.php');
     $date=$_POST['date'];
     $duree=$_POST['duree'];
@@ -9,8 +10,7 @@
     $categorie=$_POST['categorie'];
     $rcourt=$_POST['Resume-court'];
     $rlong=$_POST['Resume-long'];
-    $id=$_COOKIE['id'];
-    ;
+    $id=$_SESSION['id'];
     try {
         $cnx->beginTransaction();
         $cnx->exec("INSERT INTO vdeux.conference VALUES (DEFAULT, '$type', '$categorie', '$langue','$date', '$horaire', '$duree', '$rcourt', '$rlong', $salle) "); 
@@ -21,7 +21,7 @@
             $resultat = $cnx ->query("SELECT num_parti FROM vdeux.participant WHERE mail='$mail'");
             $r=$resultat->fetch(PDO::FETCH_OBJ);
             if ($r) {
-                $idparti=$r['num_parti'];
+                $idparti=$r->num_parti;
                 $cnx->exec("INSERT INTO vdeux.organise VALUES ($idconf, $idparti) ");
             } 
         }

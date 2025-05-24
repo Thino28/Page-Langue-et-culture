@@ -146,14 +146,15 @@
                             echo "<p class='salle'> Salle $ligne->num_salle aile $ligne->aile</p>";
                             echo "<p class='place'> $count personne(s) inscrite(s)</p>";
                             echo "<div class='actions'>";
-                            echo "<input class='modifier-check' type='checkbox' name='voir_modif' value='$ligne->num_conf' id='modifier$ligne->num_conf' hidden>";
                             echo "<label for='modifier$ligne->num_conf' class='modifier-bouton'>Modifier</label>";
                             echo "<form method='post' action='script_php/supp_conf.php'>";
                             echo "<button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'>";
                             echo "<img src='image/supprime.png' alt='Bouton_supprimer'></button></form>";
                             echo "</div>";
+                            echo "<input class='modifier-check' type='checkbox' name='voir_modif' value='$ligne->num_conf' id='modifier$ligne->num_conf' hidden>";
+                            echo "<input class='annuler-check' type='checkbox' name='annuler' id='annuler$ligne->num_conf' hidden>";
 
-                            
+                            // Formulaire de modification de conférence
                             echo "<div class='modifier'><div class='modifier-contenu'>"; 
                             echo "<form method='post' action='script_php/modif_conf.php'>";
                             echo "<div class='form-group'>";
@@ -198,16 +199,16 @@
                             echo "</select>";
                             echo "</div>";
                             echo "<div class='form-group'>";
-                            echo "<label for='description'>Résumer court:  :</label>";
+                            echo "<label for='description'>Résumer court:</label>";
                             echo "<textarea id='Resumer-court' name='Resumer-court' ></textarea>";
                             echo "</div>";
                             echo "<div class='form-group'>";
-                            echo "<label for='description'>Résumer long:  :</label>";
+                            echo "<label for='description'>Résumer long:</label>";
                             echo "<textarea id='Resumer-long' name='Resumer-long' ></textarea>";
                             echo "</div>";
                             echo "<div class='form-group-button'>";
                             echo "<button type='submit' class='bouton-modifier'>Modifier</button>";
-                            echo "<label for='actif2' id='bouton'>Annuler</label>";
+                            echo "<label for='annuler' id='boutonannuler'>Annuler</label>";
                             echo "</div>";
                             echo "</form>";
                             echo "</div></div>";
@@ -219,6 +220,8 @@
                     }
                 ?>
             </div>
+
+            
             <!--
             <div class="modifier">
                 <div class="modifier-contenu">
