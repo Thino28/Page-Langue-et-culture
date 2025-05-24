@@ -10,7 +10,7 @@
 <body>
     <?php 
         session_start();
-        if ($_SESSION["id"]>2) {
+        if ($_SESSION["id"]>2 || (!isset($_SESSION['prenom'])) || ($_SESSION['prenom']=="Invité")) {
             header('location:index.html');
             exit();
         }

@@ -11,7 +11,7 @@
     <?php 
         session_start();
         include ("script_php/cnx_admin.inc.php");
-        if ($_SESSION["id"]>2) {
+        if ($_SESSION["id"]>2 || (!isset($_SESSION['prenom'])) || ($_SESSION['prenom']=="Invité")) {
             header('location:index.html');
             exit();
         }

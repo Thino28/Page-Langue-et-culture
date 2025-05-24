@@ -24,12 +24,12 @@
     ?>
     <div class="ligne">
       <span>Nom : </span> 
-      <input type="text" name="nom" id="nom">
+      <input type="text" name="nom" id="nom" required>
     </div>
     <br>
     <div class="ligne">
       <span>Prénom : </span>
-      <input type="text" name="prenom" id="prenom">
+      <input type="text" name="prenom" id="prenom" required>
     </div>
     <br>
     <div class="ligne">
@@ -39,7 +39,7 @@
     <br>
     <div class="ligne">
       <span>Adresse mail : </span>
-      <input type="mail" name="mail" id="mail">
+      <input type="mail" name="mail" id="mail" required> 
     </div>
     <br>
     <div class="ligne">
@@ -49,7 +49,7 @@
     <br>
     <div class="ligne">
       <span>Date de naissance : </span>
-      <input type="date" name="naiss" id="naiss">
+      <input type="date" name="naiss" id="naiss" required>
     </div>
     <br>
     <div class="ligne">
@@ -59,12 +59,12 @@
     <br>
     <div class="ligne">
       <span>Mot de passe : </span>
-      <input type="password" name="mdp" id="mdp">
+      <input type="password" name="mdp" id="mdp" required>
     </div>
     <br>
     <div class="ligne">
       <span>Confirmation du mot de passe : </span>
-      <input type="password" name="mdp2" id="mdp2">
+      <input type="password" name="mdp2" id="mdp2" required>
     </div>
     <br>
     

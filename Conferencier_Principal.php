@@ -11,7 +11,8 @@
     <header>
         <?php
             session_start();
-            if (isset($_SESSION['conf']) && ($_SESSION['conf']!=true)) {
+            include("script_php\cnx_parti.inc.php");
+            if (isset($_SESSION['conf']) && ($_SESSION['conf']!=true) || (!isset($_SESSION['prenom'])) || ($_SESSION['prenom']=="Invité")) {
                 header('location:index.html');
                 exit();
             }
@@ -33,8 +34,8 @@
                 <a href="#profil" >
                     <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
                     <?php
-                        if (isset($_COOKIE['prenom'])){
-                            echo $_COOKIE['prenom'];
+                        if (isset($_SESSION['prenom'])){
+                            echo $_SESSION['prenom'];
                         } else {
                             echo "Profil";
                         }
@@ -54,11 +55,12 @@
                 </h1>
             </div>
             <?php
-                include("script_php\cnx_parti.inc.php");
+                //Bouton pour ajouter une conférence
                 echo "<div class='ajouter'>";
                 echo "<input type='checkbox' id='actif' hidden>";
                 echo "<div class='ajouter-container'>";
                 echo "<label for='actif'> Ajouter</label></div>";
+                // Formulaire d'ajout de conférence
                 echo "<div class='ajouter-contenu'>";
                 echo "<form method='post' action='script_php/ajout_conf.php'>";
                 echo "<div class='form-group'>";
@@ -121,7 +123,7 @@
             <div class="cases-container">
                 <?php
                     try {
-                        $id=$_COOKIE['id'];
+                        $id=$_SESSION['id'];
                         $result = $cnx -> query("SELECT DISTINCT conference.num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle JOIN vdeux.organise ON conference.num_conf=organise.num_conf WHERE organise.num_parti=$id ORDER BY date_conf,horaire");
                         while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
                             $inscrit = $cnx -> query("SELECT COUNT(*) FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf");
