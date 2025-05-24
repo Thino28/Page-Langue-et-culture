@@ -38,8 +38,8 @@
                 <a href="#profil" >
                     <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
                     <?php
-                        if (isset($_COOKIE['prenom'])){
-                            echo $_COOKIE['prenom'];
+                        if (isset($_SESSION['prenom'])){
+                            echo $_SESSION['prenom'];
                         } else {
                             echo "Profil";
                         }

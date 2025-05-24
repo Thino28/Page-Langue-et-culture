@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    $_SESSION["invite"] = true;
+    $_SESSION["prenom"] = "Visiteur";
     header('Location: ../Client_Principal.php');
     exit();
 ?>
