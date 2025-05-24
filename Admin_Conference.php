@@ -10,6 +10,7 @@
 <body>
     <?php 
         session_start();
+        include("script_php\cnx_admin.inc.php");
         if ($_SESSION["id"]>2) {
             header('location:index.html');
             exit();
@@ -60,21 +61,23 @@
 
             <div class="cases-container">
                 <?php
-                    include("script_php\cnx_admin.inc.php");
                     try {
                         $result = $cnx -> query("SELECT DISTINCT conference.num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.capacite,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle JOIN vdeux.organise ON conference.num_conf=organise.num_conf ORDER BY date_conf,horaire");
                         while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
-                            $capacite = $ligne->capacite;
+                            //Calcul du nombre de places restantes
                             $inscrit = $cnx -> query("SELECT COUNT(*) FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf");
                             $insc = $inscrit->fetch(PDO::FETCH_OBJ);
                             $count = $insc->count;
+                            $capacite = $ligne->capacite;
                             $capa = (int)$capacite - (int)$count;
-                            setlocale(LC_TIME, 'french');
+                            // Formatage de la date, de l'heure et de la durée
+                            setlocale(LC_TIME, 'french');   
                             $date = new DateTime($ligne->date_conf);
                             $dt = strftime('%A %d %B %Y', $date->getTimestamp());
                             $hr = date("H\hi", strtotime($ligne->horaire));
                             list($heures, $minutes, $secondes) = explode(":", $ligne->duree);
                             $dur = ($heures * 60) + $minutes;
+                            // Affichage de la conférence
                             echo "<div class='case-conférence'>";
                             echo "<p class='date'>$dt</p><hr>";
                             echo "<p class='type'>$ligne->type_intervention</p>"; 
@@ -94,63 +97,6 @@
                         echo "<h1>Une erreur est survenue, veuillez patienter.</h1>";
                     }
                 ?>
-
-
-                <!-- Conference 1
-                <div class="case-conférence">
-                    
-                    <p class="date">Lundi 28 avril 2025</p>
-                    <hr>
-                    <p class="type">Conférence</p>
-                    <h2 class="conf_titre">Conférence sur la nature</h2>
-                    <p class="langues">Langue : anglais</p>
-                    <p class="duree">16h - 180min</p>
-                    <p class="categorie">Educatif</p>
-                    <p class="salle"> Salle 202</p>
-                    <p class="place"> 200 places restantes</p>
-                    <div class="actions">
-                        <button class="modifier">Modifier</button>
-                        <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
-                        <button class="refuser"><img src="image/supprime.png" alt="Bouton_supprimer"></button>
-                    </div>
-                </div>-->
-
-                <!-- Conference 2 
-                <div class="case-conférence">
-                    <p class="date">Lundi 29 avril 2025</p>
-                    <hr>
-                    <p class="type">Conférence</p>
-                    <h2 class="conf_titre">Conférence sur la santé</h2>
-                    <p class="langues">Langue : allemand</p>
-                    <p class="duree">12h00 - 120min</p>
-                    <p class="categorie">Informatif</p>
-                    <p class="salle"> Salle 205</p>
-                    <p class="place"> 20 places restantes</p>
-                    <div class="actions">
-                        <button class="modifier">Modifier</button>
-                        <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
-                        <button class="refuser"><img src="image/supprime.png" alt="Bouton_supprimer"></button>
-                    </div>
-                </div>-->
-                
-                <!-- Conference 3 
-                <div class="case-conférence">
-                    <p class="date">Lundi 2 mai 2025</p>
-                    <hr>
-                    <p class="type">Présentation</p>
-                    <h2 class="conf_titre">Conférence sur l'histoire</h2>
-                    <p class="langues">Langue : allemand</p>
-                    <p class="duree">12h00 - 90min</p>
-                    <p class="categorie">Educatif</p>
-                    <p class="salle"> Salle 301</p>
-                    <p class="place"> 58 places restantes</p>
-                    <div class="actions">
-                        <button class="modifier">Modifier</button>
-                        <button class="valider"><img src="image/valide.png" alt="Bouton_valider"></button>
-                        <button class="refuser"><img src="image/supprime.png" alt="Bouton_supprimer"></button>
-                    </div>
-                </div>-->
-
             </div>
         </section>
     </main>

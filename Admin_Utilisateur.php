@@ -35,7 +35,7 @@
                     <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
                     Gestion utilisateur
                 </a>
-                <a href="profil.php" >
+                <a href="#profil" >
                     <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
                     <?php
                         if (isset($_SESSION['prenom'])){

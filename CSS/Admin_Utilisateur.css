@@ -128,47 +128,19 @@ label{
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.2em;
     margin-right: 1em;
     gap: 0.5em;
-}
-/*------------------------*/
-input[type="radio"] {
-  width: 1.5em;
-  height: 1.5em;
-  cursor: pointer;
-}
-/*------------------------*/
-.supprime input[type="submit"]{
-    background-color: #7093BC;
-    border-radius: 0.7em;
-    border-style: none;
-    height: 2.3em;
-    width: 6em;
-    font-size: 1em;
-    color: white;
-    cursor: pointer;
-}
-
-/*------------------------*/
-.validation-global{
-    display: flex;
-    justify-content: end;
-}
-
-/*------------------------*/
-.validation-global input[type="button"]{
     background-color: #7093BC;
     border-style: none;
     border-radius: 0.7em;
-    height: 2em;
-    width: 5em;
     font-size: 1em;
     color: white;
     cursor: pointer;
+    padding: 0.5em 0.7em;
 }
+
 /*------------------------*/
-input[type="button"]:hover {
+label:hover {
     background-color: #3870af;
 }
 
