@@ -3,10 +3,11 @@
     include("cnx_utilisateur.inc.php");
     $mail = $_POST["mail"];
     $mdp = $_POST["mdp"];
-    $result = $cnx -> query("SELECT num_parti,prenom,titre_pro,titre_conf FROM vdeux.participant WHERE mail='$mail' and mdp='$mdp'");
+    $result = $cnx -> query("SELECT num_parti,prenom,nom,titre_pro,titre_conf FROM vdeux.participant WHERE mail='$mail' and mdp='$mdp'");
     if ($result) {
         $ligne = $result -> fetch(PDO::FETCH_ASSOC);
         $_SESSION['prenom'] = $ligne['prenom'];
+        $_SESSION['nom'] = $ligne['nom'];
         $_SESSION['id'] = $ligne['num_parti'];
         $_SESSION['pro'] = $ligne['titre_pro'];
         $_SESSION['conf'] = $ligne['titre_conf'];

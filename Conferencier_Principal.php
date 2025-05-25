@@ -27,20 +27,22 @@
                     <img src="image/Vector.png" alt="home" class="logo-icon">
                     Accueil
                 </a>
-                <a href="Conferencier_Conference.php" >
-                    <img src="image/Icon_conférence.png" alt="icon_conference" class="logo-icon">
-                    Gestion  conférence
-                </a>
-                <a href="#profil" >
-                    <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
-                    <?php
-                        if (isset($_SESSION['prenom'])){
-                            echo $_SESSION['prenom'];
-                        } else {
-                            echo "Profil";
-                        }
-                    ?>
-                </a>
+                <div class="profil-déroulant">
+                    <a href="profil.php" class="profil-button">
+                        <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
+                        <?php
+                            if (isset($_SESSION['prenom'])){
+                                echo $_SESSION['prenom'];
+                            } else {
+                                echo "Profil";
+                            }
+                        ?>
+                    </a>
+                    <div class="profil-menu">
+                        <a href="profil.php">Profil</a>
+                        <a href="script_php/deconnexion.php">Se déconnecter</a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -126,15 +128,19 @@
                         $id=$_SESSION['id'];
                         $result = $cnx -> query("SELECT DISTINCT conference.num_conf,resume_court,resume_long,categorie_theme,langue,horaire,duree,date_conf,type_intervention,conference.num_salle,salle.aile FROM vdeux.conference JOIN vdeux.salle ON conference.num_salle=salle.num_salle JOIN vdeux.organise ON conference.num_conf=organise.num_conf WHERE organise.num_parti=$id ORDER BY date_conf,horaire");
                         while($ligne =$result->fetch(PDO::FETCH_OBJ)) {
+                            $idconf = $ligne->num_conf;
+                            //Calcul du nombre de participants inscrits
                             $inscrit = $cnx -> query("SELECT COUNT(*) FROM vdeux.inscrit WHERE num_conf=$ligne->num_conf");
                             $insc = $inscrit->fetch(PDO::FETCH_OBJ);
                             $count = $insc->count;
+                            // Formatage de la date, de l'heure et de la durée
                             setlocale(LC_TIME, 'french');
                             $date = new DateTime($ligne->date_conf);
                             $dt = strftime('%A %d %B %Y', $date->getTimestamp());
                             $hr = date("H\hi", strtotime($ligne->horaire));
                             list($heures, $minutes, $secondes) = explode(":", $ligne->duree);
                             $dur = ($heures * 60) + $minutes;
+                            // Affichage de la conférence
                             echo "<div class='case-conférence'>";
                             echo "<p class='date'>$dt</p><hr>";
                             echo "<p class='type'>$ligne->type_intervention</p>"; 
@@ -150,17 +156,13 @@
                             echo "<form method='post' action='script_php/supp_conf.php'>";
                             echo "<button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'>";
                             echo "<img src='image/supprime.png' alt='Bouton_supprimer'></button></form>";
-                            echo "</div>";
+                            echo "</div></div>";
                             echo "<input class='modifier-check' type='checkbox' name='voir_modif' value='$ligne->num_conf' id='modifier$ligne->num_conf' hidden>";
                             echo "<input class='annuler-check' type='checkbox' name='annuler' id='annuler$ligne->num_conf' hidden>";
 
                             // Formulaire de modification de conférence
                             echo "<div class='modifier'><div class='modifier-contenu'>"; 
                             echo "<form method='post' action='script_php/modif_conf.php'>";
-                            echo "<div class='form-group'>";
-                            echo "<label for='titre'>Titre de la conférence :</label>";
-                            echo "<input type='text' id='titre' name='titre' >";
-                            echo "</div>";
                             echo "<div class='form-group'>";
                             echo "<label for='date'>Date :</label>";
                             echo "<input type='date' id='date' name='date' >";
@@ -184,11 +186,7 @@
                             echo "<div class='form-group'>";
                             echo "<label for='categorie'>Catégorie :</label>";
                             echo "<input type='text' id='categorie' name='categorie' >";
-                            echo "</div>";
-                            echo "<div class='form-group'>";
-                            echo "<label for='thème'>Thème :</label>";
-                            echo "<input type='text' id='thème' name='thème' >";
-                            echo "</div>";    
+                            echo "</div>";  
                             echo "<div class='form-group'>";
                             echo "<label for='salle'>Salle :</label>";
                             echo "<select id='salle' name='salle' >";
@@ -199,15 +197,15 @@
                             echo "</select>";
                             echo "</div>";
                             echo "<div class='form-group'>";
-                            echo "<label for='description'>Résumer court:</label>";
-                            echo "<textarea id='Resumer-court' name='Resumer-court' ></textarea>";
+                            echo "<label for='description'>Titre/Résumé court:</label>";
+                            echo "<textarea id='Resumer-court' name='Resume-court' ></textarea>";
                             echo "</div>";
                             echo "<div class='form-group'>";
-                            echo "<label for='description'>Résumer long:</label>";
-                            echo "<textarea id='Resumer-long' name='Resumer-long' ></textarea>";
+                            echo "<label for='description'>Résumé long:</label>";
+                            echo "<textarea id='Resumer-long' name='Resume-long' ></textarea>";
                             echo "</div>";
                             echo "<div class='form-group-button'>";
-                            echo "<button type='submit' class='bouton-modifier'>Modifier</button>";
+                            echo "<button type='submit' value='$idconf' name='idconf' class='bouton-modifier'>Modifier</button>";
                             echo "<label for='annuler' id='boutonannuler'>Annuler</label>";
                             echo "</div>";
                             echo "</form>";

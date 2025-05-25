@@ -60,6 +60,40 @@ header{
     color: #4654AE;
     transition: 0.3s;
 }
+
+
+.profil-déroulant {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profil-menu {
+    display: none;
+    position: absolute;
+    top: 50px; /* pour qu'il ne cache pas l'élément au-dessus */
+    background-color: rgb(0, 0, 0);
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.profil-menu a {
+    color: #313131;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.profil-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.profil-déroulant:hover .profil-menu {
+    display: block;
+}
+
 /* ---Header fin-------------------------------------------------------- */ 
 
 

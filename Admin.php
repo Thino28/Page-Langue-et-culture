@@ -34,16 +34,22 @@
                     <img src="image/Icon_utilisateur.png" alt="icon_utilisateur" class="logo-icon">
                     Gestion utilisateur
                 </a>
-                <a href="#profil" >
-                    <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
-                    <?php
-                        if (isset($_SESSION['prenom'])){
-                            echo $_SESSION['prenom'];
-                        } else {
-                            echo "Profil";
-                        }
-                    ?>
-                </a>
+                <div class="profil-déroulant">
+                    <a href="profil.php" class="profil-button">
+                        <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
+                        <?php
+                            if (isset($_SESSION['prenom'])){
+                                echo $_SESSION['prenom'];
+                            } else {
+                                echo "Profil";
+                            }
+                        ?>
+                    </a>
+                    <div class="profil-menu">
+                        <a href="profil.php">Profil</a>
+                        <a href="script_php/deconnexion.php">Se déconnecter</a>
+                    </div>
+                </div>
             </nav>
         </div>
 

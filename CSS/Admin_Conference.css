@@ -60,6 +60,40 @@ header{
     color: #4654AE;
     transition: 0.3s;
 }
+
+
+.profil-déroulant {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profil-menu {
+    display: none;
+    position: absolute;
+    top: 50px; /* pour qu'il ne cache pas l'élément au-dessus */
+    background-color: rgb(0, 0, 0);
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.profil-menu a {
+    color: #313131;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.profil-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.profil-déroulant:hover .profil-menu {
+    display: block;
+}
+
 /* ---Header fin-------------------------------------------------------- */ 
 
 
@@ -154,7 +188,29 @@ main{
     margin-bottom: 1em;
 }
 /*------------------------*/
-.modifier {
+.modifier{
+    display: none;
+}
+.modifier-contenu{
+    display: block;
+    background-color: #dde3ff;
+    width: 80vw;
+    max-width: 700px;
+    min-width: 480px;
+    margin: 2em auto;
+    padding: 1em;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.modifier-check:checked ~ .modifier{
+    display: block;
+}
+
+.annuler-check:checked ~ .modifier{
+    display: none;
+}
+
+.modifier-bouton {
     background-color: #7093BC;
     border-style: none;
     border-radius: 0.7em;
@@ -162,9 +218,11 @@ main{
     width: 5em;
     font-size: 1em;
     color: white;
+    text-align: center;
+    padding-top: 0.7em;
 }
-/*------------------------*/
-.modifier:hover {
+
+.modifier-bouton:hover {
     background-color: #3870af;
 }
 /*------------------------*/
