@@ -65,4 +65,6 @@
         echo $e;
         exit();
     }
+    header('location:../profil.php');
+    exit();
 ?>
