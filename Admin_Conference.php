@@ -153,7 +153,6 @@
                             echo "</div>";
                             echo "</form>";
                             echo "</div></div>";
-                            echo "</div>";
                         }
                     } catch (PDOException $e) {
                         echo "<h1>Une erreur est survenue, veuillez patienter.</h1>";

@@ -198,7 +198,6 @@ textarea{
     background-color: #dde3ff;
     width: 80vw;
     max-width: 700px;
-    min-width: 480px;
     margin: 2em auto;
     padding: 1em;
     border-radius: 15px;
@@ -227,6 +226,16 @@ textarea{
 .modifier-bouton:hover {
     background-color: #3870af;
 }
+
+.modifier-contenu input,
+.modifier-contenu select,
+.modifier-contenu textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
 /*------------------------*/
 .cases-container{
     display: flex;
@@ -245,6 +254,7 @@ textarea{
     width: 280px;
     height: min-content;
     border-radius: 2vw;
+    overflow: auto;
 }
 
 .contenu-conf{

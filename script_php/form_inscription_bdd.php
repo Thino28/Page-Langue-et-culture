@@ -41,10 +41,11 @@
         } catch (PDOException $e) {
             $cnx -> rollback();
             $_SESSION["essai_inscription"] = "Erreur lors de l'inscription";
+            echo "Erreur : " . $e -> getMessage();
         }
     } else {
         $_SESSION["essai_inscription"] = "Mot de passe non identique";
     }
-    //header('location:..\form_inscription.php');
-    //exit();
+    header('location:..\form_inscription.php');
+    exit();
 ?>

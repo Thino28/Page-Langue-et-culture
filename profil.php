@@ -19,14 +19,16 @@
             <nav>
                 <?php
                     session_start();
-                    if ((isset($_SESSION['conf']) && ($_SESSION['conf']==true))){
+                    if ((isset($_SESSION['conf']) && ($_SESSION['conf']))){
                         echo "<a href='Conferencier_Principal.php' >";
-                    }
-                    if (isset($_SESSION['id']) && $_SESSION['id'] < 3) {
-                        echo "<a href='Admin.php' >";
                     } else {
-                        echo "<a href='Client_Principal.php' >";
+                        if (isset($_SESSION['id']) && $_SESSION['id'] < 3) {
+                            echo "<a href='Admin.php' >";
+                        } else {
+                            echo "<a href='Client_Principal.php' >";
+                        }
                     }
+                    
                 ?>
                     <img src="image/Vector.png" alt="home" class="logo-icon">
                     Accueil

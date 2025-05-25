@@ -103,11 +103,11 @@
                 echo "</select>";
                 echo "</div>";
                 echo "<div class='form-group'>";
-                echo "<label for='description'>Titre/Résumer court: </label>";
+                echo "<label for='description'>Titre/Résumé court: </label>";
                 echo "<textarea id='Resumer-court' name='Resume-court' required></textarea>";
                 echo "</div>";
                 echo "<div class='form-group'>";
-                echo "<label for='description'>Résumer long: </label>";
+                echo "<label for='description'>Résumé long: </label>";
                 echo "<textarea id='Resumer-long' name='Resume-long' required></textarea>";
                 echo "</div>";
                 echo "<div class='form-group-button'>";
@@ -218,71 +218,6 @@
                     }
                 ?>
             </div>
-
-            
-            <!--
-            <div class="modifier">
-                <div class="modifier-contenu">
-                    <form>
-                        <div class="form-group">
-                            <label for="titre">Titre de la conférence :</label>
-                            <input type="text" id="titre" name="titre" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="date">Date :</label>
-                            <input type="date" id="date" name="date" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="duree">Durée :</label>
-                            <input type="text" id="duree" name="duree" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="horaire">Horaire :</label>
-                            <input type="text" id="horaire" name="horaire" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="langue">Langue :</label>
-                            <input type="text" id="langue" name="langue" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="Type">Type :</label>
-                            <input type="text" id="type" name="type" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="categorie">Catégorie :</label>
-                            <input type="text" id="categorie" name="categorie" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="thème">Thème :</label>
-                            <input type="text" id="thème" name="thème" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="salle">Salle :</label>
-                            <select id="salle" name="salle" required>
-                                <option value="Salle 101">Salle 101</option>
-                                <option value="Salle 102">Salle 102</option>
-                                <option value="Salle 103">Salle 103</option>
-                                <option value="Salle 104">Salle 104</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Résumer court:  :</label>
-                            <textarea id="Resumer-court" name="Resumer-court" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Résumer long:  :</label>
-                            <textarea id="Resumer-long" name="Resumer-long" required></textarea>
-                        </div>
-
-                        <div class="form-group-button">
-                            <button type="submit" class="bouton-ajouter">Ajouter</button>
-                            <label for="actif2" id="bouton">Annuler</label> 
-                        </div>
-                    </form>
-                </div>
-            </div> -->
         </section>
     </main>
 </body>
