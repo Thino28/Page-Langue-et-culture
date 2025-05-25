@@ -57,6 +57,7 @@
                 </h1>
             </div>
             <?php
+                $id=$_SESSION['id'];
                 //Bouton pour ajouter une conférence
                 echo "<div class='ajouter'>";
                 echo "<input type='checkbox' id='actif' hidden>";
@@ -111,7 +112,7 @@
                 echo "<textarea id='Resumer-long' name='Resume-long' required></textarea>";
                 echo "</div>";
                 echo "<div class='form-group-button'>";
-                echo "<button type='submit' class='bouton-ajouter'>Ajouter</button>";
+                echo "<button type='submit' class='bouton-ajouter' value='$id' >Ajouter</button>";
                 echo "<label for='actif' id='bouton'>Annuler</label>";
                 echo "</div>";
                 echo "</form>";
@@ -158,7 +159,6 @@
                             echo "<img src='image/supprime.png' alt='Bouton_supprimer'></button></form>";
                             echo "</div></div>";
                             echo "<input class='modifier-check' type='checkbox' name='voir_modif' value='$ligne->num_conf' id='modifier$ligne->num_conf' hidden>";
-                            echo "<input class='annuler-check' type='checkbox' name='annuler' id='annuler$ligne->num_conf' hidden>";
 
                             // Formulaire de modification de conférence
                             echo "<div class='modifier'><div class='modifier-contenu'>"; 
@@ -206,10 +206,10 @@
                             echo "</div>";
                             echo "<div class='form-group-button'>";
                             echo "<button type='submit' value='$idconf' name='idconf' class='bouton-modifier'>Modifier</button>";
-                            echo "<label for='annuler$idconf' id='boutonannuler$idconf'>Annuler</label>";
+                            echo "<label for='modifier$idconf' id='boutonannuler$idconf'>Annuler</label>";
                             echo "</div>";
                             echo "</form>";
-                            echo "</div></div>";
+                            echo "</div><div>";
                             
                         }
                     } catch (PDOException $e) {

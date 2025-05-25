@@ -1,10 +1,28 @@
+#index {
+    background-color: #7093BC;
+    font-family: Inter;
+}
+
 body{
     margin:0;
     background-color: #4654AE ;
     font-family: "Itim", sans-serif;
-    color: white;
 }
 
+.bouton {
+    background-color: #7093BC;
+    border-radius: 0.7em;
+    padding: 0.5em 2.5em;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    border: none;
+}
+
+.bouton:hover {
+    background-color: #3870af;
+}
 
 /* ---Header début-------------------------------------------------------- */ 
 header{
@@ -93,16 +111,11 @@ header{
     display: block;
 }
 
-/* ---Header fin-------------------------------------------------------- */ 
-
+/* ---Header fin-------------------------------------------------------- */
 
 /* ---Main début -------------------------------------------------------- */
 main{
     text-align: center;
-}
-/*------------------------*/
-.type {
-    text-align: left;
 }
 /*------------------------*/
 .titre{
@@ -110,9 +123,6 @@ main{
     letter-spacing: 0.3vw;
     margin-top: 20px;
     margin-bottom: 5%;
-    /*
-    margin-top: 3vh;
-    margin-bottom: 3vh;*/
     color: white;
 }
 /*------------------------*/
@@ -187,55 +197,31 @@ main{
 }  
 
 /*---parti inscription/inviter-------------------------------------------------------------------------------*/
-
-.inscrire {
-    background-color: #7093BC;
-    border-radius: 0.7em;
-    padding: 0.5em 1em;
-    color: white;
-    cursor: pointer;
-    display: inline-block;
-
+.details-inscription {
+    max-height: 0;
+    text-align: center;
+    overflow: hidden;
 }
 /*------------------------*/
-label.inscrire:hover {
-    background-color: #3870af;
+.bouton-inscription:checked ~ .details-inscription {
+    max-height: 300px; 
+}
+.bouton-inscription:checked ~ .bouton {
+    display: none;
 }
 /*------------------------*/
 .details-invitation{
+    max-height: 0;
     text-align: center;
-    display: none;
+    overflow: hidden;
 }
 .bouton-invitation:checked ~ .details-invitation {
-    display: block;
+    max-height: 300px; 
 }
-.bouton-invitation:checked ~ .inviter {
+.bouton-invitation:checked ~ .bouton {
     display: none;
 }
 
-.annuler:checked ~ .details-invitation {
-    display: none;
-}
-.annuler:checked ~ .inviter {
-    display: none;
-}
-
-/*------------------------*/
-label.inviter {
-    background-color: #7093BC;
-    border-radius: 0.7em;
-    padding: 0.5em 2.5em;
-    color: white;
-    cursor: pointer;
-    display: inline-block;
-    margin-bottom: 0.5em;
-
-
-}
-/*------------------------*/
-label.inviter:hover {
-    background-color: #3870af;
-}
 /*------------------------*/
 
 
@@ -247,3 +233,117 @@ input[type="email"] {
     border-radius: 0.7em;
 }
 /* ---Main fin -------------------------------------------------------- */
+
+/*--------------------------------------------------------INDEX---------------------------------------------------------------*/
+
+.titre-index {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: white;
+    text-align: center;   
+}
+
+.intro {
+    margin : auto;
+    width: 70%;
+    text-align: center;
+    background-color: #FFEDD7;
+    border-radius: 10px;
+    height: auto;
+    min-height: 80px;
+    font-size: 1.4em;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.conteneur-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+    gap: 4em;
+    flex-wrap: wrap;
+}
+
+.conteneur-index > .floute {
+    max-width: 380px;
+    opacity: 50%;
+    margin-left: 10%;
+
+}
+
+.boutons-index {
+    background-color: #FFEDD7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 25em;
+    width: 25em;   
+    border-radius: 3em;
+    gap: 2em;
+}
+
+.boutons-index label {
+    font-size: 1.5em;
+}
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------*/
+
+.form-connexion {
+    background-color: #dde3ff;
+    max-width: 700px;
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 15px;
+    width: 25em;
+    height: fit-content;
+    font-size: 1.45em;
+}
+
+.form-group{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.form-group label {
+    width: 10em;
+    color: black;
+}
+
+.form-group-button{
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-group-button label{
+    background-color: #7093BC;
+    border-style: none;
+    border-radius: 0.7em;
+    font-size: 1em;
+    color: white;
+    padding: 0.7em 0.5em ;
+    margin: 2em;
+    width: 6em;
+    cursor: pointer; 
+    text-align: center;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    flex-grow: 1;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 2px solid black;
+    background-color: #7093BC;
+    color: white;
+}
+
+.type_inscription {
+    width: 100%;
+    text-align: center;
+}

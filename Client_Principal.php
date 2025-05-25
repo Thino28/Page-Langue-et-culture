@@ -109,15 +109,16 @@
                                     echo "<label class='inscrire' for='desinscrire$idconf'>Desinscription</label></form>";
 
                                     echo "<p>Voulez-vous inviter quelqu’un ?</p>";
-                                    echo "<input type='checkbox' id='inviter$idconf' class='bouton-invitation' hidden>";
+                                    echo "<input type='checkbox' id='inviter$idconf' class='bouton-invitation' hidden >";
+                                    
                                     echo "<label for='inviter$idconf' class='inviter'>Inviter</label>";
 
                                     echo "<form class='details-invitation' action='script_php/invitation.php' method='post'>";
                                     echo "<input name='inv' type='email' id='mail$idconf' class='mail' placeholder='Insérer un mail'>";
                                     echo "<input name='valinv' value='$couple_conf_parti' type='submit' id='valider$idconf' class='validation' hidden>";
                                     echo "<label for='valider$idconf' class='inviter'>Valider</label>";
-                                    echo "<input type='checkbox' id='annuler$idconf' class='annuler' hidden>";
-                                    echo "<label for='annuler$idconf' class='inviter'>Annuler</label></form>";
+                                    
+                                    echo "<label for='inviter$idconf' class='inviter'>Annuler</label></form>";
                                 } else {
                                     echo "<form action='script_php/inscription_conf.php' method='post'>";
                                     echo "<input type='submit' value='$couple_conf_parti' name='insc' id='inscrire$idconf' hidden>";

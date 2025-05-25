@@ -1,6 +1,7 @@
 <?php
     session_start();
     include('cnx_admin.inc.php');
+    print_r($_POST);
     $date=$_POST['date'];
     $duree=$_POST['duree'];
     $horaire=$_POST['horaire'];
