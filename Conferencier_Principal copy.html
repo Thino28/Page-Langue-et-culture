@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion du site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Conferencier_Principal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <?php
+            session_start();
+            include("script_php\cnx_parti.inc.php");
+            if (isset($_SESSION['conf']) && ($_SESSION['conf']!=true) || (!isset($_SESSION['prenom'])) || ($_SESSION['prenom']=="Invité")) {
+                header('location:index.html');
+                exit();
+            }
+        ?>
+        <div class="logo">
+            <img src="image/Foreign Language Course.png" alt="Logo" class="logo-image">
+        </div>
+
+        <div class="sous-menu">
+            <nav>
+                <a href="Conferencier_Principal.php">
+                    <img src="image/Vector.png" alt="home" class="logo-icon">
+                    Accueil
+                </a>
+                <div class="profil-déroulant">
+                    <a href="profil.php" class="profil-button">
+                        <img src="image/icon Compte blanc.png" alt="" class="logo-icon">
+                       profil
+                    </a>
+                    <div class="profil-menu">
+                        <a href="profil.php">Profil</a>
+                        <a href="script_php/deconnexion.php">Se déconnecter</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="transition-band"></div>
+
+    <main>
+        <section>
+            <div class="titre">
+                <h1>
+                    Vos conférences :
+                </h1>
+            </div>
+            
+            <div class='ajouter'>";
+                <input type='checkbox' id='actif' hidden>";
+                <div class='ajouter-container'>";
+                    <label for='actif'> Ajouter</label>
+                </div>";
+                <div class='ajouter-contenu'>";
+                    <form method='post' action='script_php/ajout_conf.php'>";
+                        <div class='form-group'>";
+                        <label for='conferencier2'>Mail d'un deuxième conferencier :</label>";
+                        <input type='mail' id='mail' name='mail'>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='date'>Date :</label>";
+                        <input type='date' id='date' name='date' required>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='horaire'>Horaire :</label>";
+                        <input type='time' id='horaire' name='horaire' required>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='duree'>Durée :</label>";
+                        <input type='time' id='duree' name='duree' required>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='langue'>Langue :</label>";
+                        <input type='text' id='langue' name='langue' required>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='Type'>Type d'intervention :</label>";
+                        <input type='text' id='type' name='type' required>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='categorie'>Catégorie :</label>";
+                        <input type='text' id='categorie' name='categorie' required>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='salle'>Salle :</label>";
+                        <select id='salle' name='salle' required>";
+                        
+                        <option value='$ligne->num_salle'>Salle $ligne->num_salle aile $ligne->aile capacite $ligne->capacite personnes</option>";
+                        
+                        </select>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='description'>Titre/Résumé court: </label>";
+                        <textarea id='Resumer-court' name='Resume-court' required></textarea>";
+                        </div>";
+                        <div class='form-group'>";
+                        <label for='description'>Résumé long: </label>";
+                        <textarea id='Resumer-long' name='Resume-long' required></textarea>";
+                        </div>";
+                        <div class='form-group-button'>";
+                        <button type='submit' class='bouton-ajouter'>Ajouter</button>";
+                        <label for='annuler' id='boutonannuler'>Annuler</label>";
+                        </div>";
+                    </form>";
+                </div>";
+            </div>";
+            
+            <input type="checkbox" id="actif2" class="form" hidden > 
+            <div class="cases-container">
+                <div class='case-conférence'>";
+                    <p class='date'>$dt</p><hr>";
+                    <p class='type'>$ligne->type_intervention</p>"; 
+                    <h2 class='conf_titre'>$ligne->resume_court</h2>";
+                    <p class='resume_long'>$ligne->resume_long</p>";
+                    <p class='langues'>Langue : $ligne->langue</p>";
+                    <p class='duree'>$hr - $dur"."min</p>";
+                    <p class='categorie'>$ligne->categorie_theme</p>";
+                    <p class='salle'> Salle $ligne->num_salle aile $ligne->aile</p>";
+                    <p class='place'> $count personne(s) inscrite(s)</p>";
+                    <div class='actions'>";
+                        <label for='modifier$ligne->num_conf' class='modifier-bouton'>Modifier</label>";
+                        <form method='post' action='script_php/supp_conf.php'>";
+                            <button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'>";
+                            <img src='image/supprime.png' alt='Bouton_supprimer'></button>
+                        </form>";
+                    </div>
+                </div>";
+                <input class='modifier-check' type='checkbox' name='voir_modif' value='$ligne->num_conf' id='modifier$ligne->num_conf' >";
+                <input class='annuler-check' type='checkbox' name='annuler' id='annuler$ligne->num_conf' hidden>";
+                <div class='modifier'>
+                    <div class='modifier-contenu'>"; 
+                        <form method='post' action='script_php/modif_conf.php'>";
+                            <div class='form-group'>";
+                                <label for='date'>Date :</label>";
+                                <input type='date' id='date' name='date' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='duree'>Durée :</label>";
+                                <input type='text' id='duree' name='duree' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='horaire'>Horaire :</label>";
+                                <input type='text' id='horaire' name='horaire' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='langue'>Langue :</label>";
+                                <input type='text' id='langue' name='langue' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='Type'>Type :</label>";
+                                <input type='text' id='type' name='type' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='categorie'>Catégorie :</label>";
+                                <input type='text' id='categorie' name='categorie' >";
+                            </div>";  
+                            <div class='form-group'>";
+                                <label for='salle'>Salle :</label>";
+                                <select id='salle' name='salle' >";
+                                    <option value='$ligne->num_salle'>Salle $ligne->num_salle aile $ligne->aile capacite $ligne->capacite personnes</option>";
+                                </select>";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='description'>Titre/Résumé court:</label>";
+                                <textarea id='Resumer-court' name='Resume-court' ></textarea>";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='description'>Résumé long:</label>";
+                                <textarea id='Resumer-long' name='Resume-long' ></textarea>";
+                            </div>";
+                            <div class='form-group-button'>";
+                                <button type='submit' value='$idconf' name='idconf' class='bouton-modifier'>Modifier</button>";
+                                <label for='annuler$ligne->num_conf' id='boutonannuler'>Annuler</label>";
+                            </div>";
+                        </form>";
+                    </div>
+                </div>";
+
+
+
+                <div class='case-conférence'>";
+                    <p class='date'>$dt</p><hr>";
+                    <p class='type'>$ligne->type_intervention</p>"; 
+                    <h2 class='conf_titre'>$ligne->resume_court</h2>";
+                    <p class='resume_long'>$ligne->resume_long</p>";
+                    <p class='langues'>Langue : $ligne->langue</p>";
+                    <p class='duree'>$hr - $dur"."min</p>";
+                    <p class='categorie'>$ligne->categorie_theme</p>";
+                    <p class='salle'> Salle $ligne->num_salle aile $ligne->aile</p>";
+                    <p class='place'> $count personne(s) inscrite(s)</p>";
+                    <div class='actions'>";
+                        <label for='modifier$ligne->num_conf' class='modifier-bouton'>Modifier</label>";
+                        <form method='post' action='script_php/supp_conf.php'>";
+                            <button name='suppc' type='submit' value='$ligne->num_conf' class='refuser'>";
+                            <img src='image/supprime.png' alt='Bouton_supprimer'></button>
+                        </form>";
+                    </div>
+                </div>";
+                <input class='modifier-check' type='checkbox' name='voir_modif' value='$ligne->num_conf' id='modifier$ligne->num_conf' >";
+                <input class='annuler-check' type='checkbox' name='annuler' id='annuler$ligne->num_conf' hidden>";
+                <div class='modifier'>
+                    <div class='modifier-contenu'>"; 
+                        <form method='post' action='script_php/modif_conf.php'>";
+                            <div class='form-group'>";
+                                <label for='date'>Date :</label>";
+                                <input type='date' id='date' name='date' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='duree'>Durée :</label>";
+                                <input type='text' id='duree' name='duree' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='horaire'>Horaire :</label>";
+                                <input type='text' id='horaire' name='horaire' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='langue'>Langue :</label>";
+                                <input type='text' id='langue' name='langue' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='Type'>Type :</label>";
+                                <input type='text' id='type' name='type' >";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='categorie'>Catégorie :</label>";
+                                <input type='text' id='categorie' name='categorie' >";
+                            </div>";  
+                            <div class='form-group'>";
+                                <label for='salle'>Salle :</label>";
+                                <select id='salle' name='salle' >";
+                                    <option value='$ligne->num_salle'>Salle $ligne->num_salle aile $ligne->aile capacite $ligne->capacite personnes</option>";
+                                </select>";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='description'>Titre/Résumé court:</label>";
+                                <textarea id='Resumer-court' name='Resume-court' ></textarea>";
+                            </div>";
+                            <div class='form-group'>";
+                                <label for='description'>Résumé long:</label>";
+                                <textarea id='Resumer-long' name='Resume-long' ></textarea>";
+                            </div>";
+                            <div class='form-group-button'>";
+                                <button type='submit' value='$idconf' name='idconf' class='bouton-modifier'>Modifier</button>";
+                                <label for='voir_modif' id='boutonannuler'>Annuler</label>";
+                            </div>";
+                        </form>";
+                    </div>
+                </div>";
+            </div>";
+                            
+                      
+                
+                            
+            
+        </section>
+    </main>
+</body>
+</html>
