@@ -9,6 +9,7 @@
          header('location:..\Client_Principal.php');
          exit();
       } else {
+         //inseration dans la table historique_invitation
          $cnx -> beginTransaction();
          try {
             $cnx->exec("INSERT INTO vdeux.historique_invitation VALUES (DEFAULT,NOW(),$num[1],$num_invit->num_parti,$num[0])");

@@ -12,6 +12,7 @@
     $rcourt=$_POST['Resume-court'];
     $rlong=$_POST['Resume-long'];
     $id=$_SESSION['id'];
+    // Ajoute la conférence dans la base de données
     try {
         $cnx->beginTransaction();
         $cnx->exec("INSERT INTO vdeux.conference VALUES (DEFAULT, '$type', '$categorie', '$langue','$date', '$horaire', '$duree', '$rcourt', '$rlong', $salle) "); 
