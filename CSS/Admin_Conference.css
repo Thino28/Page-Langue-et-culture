@@ -191,6 +191,8 @@ main{
 .modifier{
     display: none;
 }
+/*------------------------*/
+
 .modifier-contenu{
     display: block;
     background-color: #dde3ff;
@@ -202,14 +204,17 @@ main{
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
+/*------------------------*/
 
 .modifier-check:checked ~ .modifier{
     display: block;
 }
+/*------------------------*/
 
 .annuler-check:checked ~ .modifier{
     display: none;
 }
+/*------------------------*/
 
 .modifier-bouton {
     background-color: #7093BC;
@@ -222,6 +227,7 @@ main{
     text-align: center;
     padding-top: 0.7em;
 }
+/*------------------------*/
 
 .modifier-bouton:hover {
     background-color: #3870af;
@@ -238,6 +244,5 @@ main{
     background: none;
     cursor: pointer;
 }
-
 
 /* ---Main fin -------------------------------------------------------- */

@@ -101,14 +101,17 @@ header{
 main{
     text-align: center;
 }
+/*------------------------*/
 .titre{
     font-size: 1.5em;
 }
+/*------------------------*/
 .profil{
     display: flex;
     justify-content: center;
     height: 20em;
 }
+/*------------------------*/
 .profil-image{
     background-color: #edefff;
     color: black;
@@ -117,12 +120,15 @@ main{
     font-size: 2em;
     border-radius: 2em;
 }
+/*------------------------*/
 .profil-icon{
     width: 3em;
 }
+/*------------------------*/
 .profil-informations{
     width: 60em;
 }
+/*------------------------*/
 form {
     background-color: #d0d6ff;
     border-radius: 2em;
@@ -137,6 +143,7 @@ form {
     padding-top: 2%;
 
 }
+/*------------------------*/
 .ligne {
     width: 70%;
     margin-left: 10%;
@@ -146,6 +153,7 @@ form {
     flex-wrap: wrap;
     color: black;
 }
+/*------------------------*/
 
 .ligne > input {
     margin-left: 2%;
@@ -156,9 +164,11 @@ form {
     border: 0.15em solid;
     font-size: large;
 }
+/*------------------------*/
 .bouton-modifier{
     margin-bottom: 0.5em;
 }
+/*------------------------*/
 .modifier{
     background-color: #7093BC;
     border-style: none;

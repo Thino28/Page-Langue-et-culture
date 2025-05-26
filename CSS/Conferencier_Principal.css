@@ -111,10 +111,12 @@ main{
     margin-bottom: 3vh;*/
     color: white;
 }
+/*------------------------*/
 .ajouter-container{
     margin-bottom: 4em;
     margin-top: 2em;
 }
+/*------------------------*/
 .ajouter-container label{
     background-color: #7093BC;
     border-style: none;
@@ -125,7 +127,7 @@ main{
     margin: 2em;
     cursor: pointer;  
 }
-
+/*------------------------*/
 .ajouter-contenu{
     display: none;
     background-color: #dde3ff;
@@ -135,15 +137,18 @@ main{
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
+/*------------------------*/
 .form-group{
     display: flex;
     align-items: center;
     margin-bottom: 1em;
 }
+/*------------------------*/
 .form-group label {
     width: 10em;
     color: black;
 }
+/*------------------------*/
 .form-group input,
 .form-group select,
 .form-group textarea{
@@ -154,6 +159,7 @@ main{
     background-color: #7093BC;
     color: white;
 }
+/*------------------------*/
 form button{
     background-color: #7093BC;
     border-style: none;
@@ -166,12 +172,15 @@ form button{
     margin-top: 32.5px;
     width: 6em;
 }
+/*------------------------*/
 textarea{
     height: 10em;
 }
+/*------------------------*/
 .form-group-button{
     display: flex;
 }
+/*------------------------*/
 .form-group-button label{
     background-color: #7093BC;
     border-style: none;
@@ -184,15 +193,16 @@ textarea{
     cursor: pointer; 
     text-align: center;
 }
-
+/*------------------------*/
 #actif:checked ~ .ajouter-contenu{
     display: block;  
 }
-
+/*------------------------*/
 /* Modifier */
 .modifier{
     display: none;
 }
+/*------------------------*/
 .modifier-contenu{
     display: block;
     background-color: #dde3ff;
@@ -203,14 +213,15 @@ textarea{
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
+/*------------------------*/
 .modifier-check:checked ~ .modifier{
     display: block;
 }
-
+/*------------------------*/
 .annuler-check:checked ~ .modifier{
     display: none;
 }
-
+/*------------------------*/
 .modifier-bouton {
     background-color: #7093BC;
     border-style: none;
@@ -222,19 +233,17 @@ textarea{
     text-align: center;
     padding-top: 0.7em;
 }
-
+/*------------------------*/
 .modifier-bouton:hover {
     background-color: #3870af;
 }
-
+/*------------------------*/
 .modifier-contenu input,
 .modifier-contenu select,
 .modifier-contenu textarea {
     width: 100%;
     box-sizing: border-box;
 }
-
-
 
 /*------------------------*/
 .cases-container{
@@ -260,14 +269,17 @@ textarea{
 .contenu-conf{
    display: block; 
 }
+/*------------------------*/
 .contenu-conf-supp{
     display: none;
     text-align: center;
     color: red;
 }
+/*------------------------*/
 .contenu-conf-supp h2{
     color: black;
 }
+/*------------------------*/
 .contenu-conf-supp label {
     background-color: #7093BC;
     border-style: none;
@@ -278,22 +290,25 @@ textarea{
     margin: 2em;
     cursor: pointer;
 }
+/*------------------------*/
 .actions label {
     cursor: pointer;
 }
+/*------------------------*/
 .supp:checked ~ .contenu-conf{
     display: none;
 }
+/*------------------------*/
 .supp:checked ~ .contenu-conf-supp{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+/*------------------------*/
 .supp:checked ~ .modifier{
     display: none;
 }
-
 /*------------------------*/
 
 .date{
@@ -344,8 +359,6 @@ textarea{
     margin-bottom: 1em;
 }
 /*------------------------*/
-
-/*------------------------*/
 .valider{
     border-style: none;
     background: none;
@@ -357,6 +370,5 @@ textarea{
     background: none;
     cursor: pointer;
 }
-
 
 /* ---Main fin -------------------------------------------------------- */

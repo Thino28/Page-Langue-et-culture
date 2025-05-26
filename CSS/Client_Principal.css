@@ -206,20 +206,22 @@ label.inscrire:hover {
     text-align: center;
     display: none;
 }
+/*------------------------*/
 .bouton-invitation:checked ~ .details-invitation {
     display: block;
 }
+/*------------------------*/
 .bouton-invitation:checked ~ .inviter {
     display: none;
 }
-
+/*------------------------*/
 .annuler:checked ~ .details-invitation {
     display: none;
 }
+/*------------------------*/
 .annuler:checked ~ .inviter {
     display: none;
 }
-
 /*------------------------*/
 label.inviter {
     background-color: #7093BC;
@@ -229,16 +231,12 @@ label.inviter {
     cursor: pointer;
     display: inline-block;
     margin-bottom: 0.5em;
-
-
 }
 /*------------------------*/
 label.inviter:hover {
     background-color: #3870af;
 }
 /*------------------------*/
-
-
 input[type="email"] {
     margin-bottom: 0.5em;
     border-style: none;
